@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone", // para deploy en Lightsail/VM: copiar .next/standalone + .next/static + public
   images: {
     remotePatterns: [
       {

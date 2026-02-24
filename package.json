@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start",
+    "prepare-standalone": "node -e \"const fs=require('fs');const path=require('path');const s='.next/standalone';if(fs.existsSync(s)){const c=(a,b)=>fs.existsSync(a)&&fs.mkdirSync(path.dirname(b),{recursive:true})&&fs.cpSync(a,b,{recursive:true}); c('public',s+'/public'); c('.next/static',s+'/.next/static'); console.log('Standalone listo');} else console.log('Ejecuta npm run build antes.');\"",
+    "start:standalone": "npm run prepare-standalone && node .next/standalone/server.js"
   },
   "dependencies": {
     "isotope-layout": "^3.0.6",
