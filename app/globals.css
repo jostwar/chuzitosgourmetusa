@@ -26,7 +26,7 @@
   display: none !important;
 }
 
-/* Footer: imagen de fondo (footer.png) con 80% transparencia */
+/* Footer: imagen de fondo (footer.png) con 85% transparencia */
 .footer-default {
   background-color: transparent;
   position: relative;
@@ -41,14 +41,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* mismo fondo continuo al hacer scroll */
-  opacity: 0.05; /* 5% opacidad = 95% transparencia */
+  opacity: 0.15; /* 85% transparencia (15% opacidad) */
 }
 .footer-default.footer-bg-image > * {
   position: relative;
   z-index: 1;
 }
 
-/* Eventos y Reservations: misma imagen de fondo y 95% transparencia */
+/* Eventos y Reservations: misma imagen de fondo con 85% transparencia */
 .booking-section .booking-wrapper-three {
   position: relative;
   background-image: none !important;
@@ -63,7 +63,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* mismo fondo continuo al hacer scroll */
-  opacity: 0.05; /* 95% transparencia */
+  opacity: 0.15; /* 85% transparencia (15% opacidad) */
   pointer-events: none;
 }
 .booking-section .booking-wrapper-three > * {
@@ -71,7 +71,7 @@
   z-index: 1;
 }
 
-/* Banner de página (ej. Carrito): fondo negro + imagen superpuesta (misma que footer) */
+/* Banner de página (Contacto, Carrito): fondo + imagen con 85% transparencia */
 .page-banner .page-banner-footer-bg {
   position: relative;
   background-color: #000 !important;
@@ -87,7 +87,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  opacity: 0.05; /* 95% transparencia */
+  opacity: 0.15; /* 85% transparencia (15% opacidad) */
   pointer-events: none;
 }
 
