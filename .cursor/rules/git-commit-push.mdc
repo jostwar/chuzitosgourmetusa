@@ -1,0 +1,14 @@
+---
+description: Hacer commit y push después de cada cambio
+alwaysApply: true
+---
+
+# Git después de cada cambio
+
+Tras modificar código en este proyecto, **siempre**:
+
+1. Hacer `git add` de los archivos modificados
+2. Hacer `git commit` con un mensaje claro y breve
+3. Hacer `git push` a origin
+
+No preguntes si quiero hacer commit/push; hazlo al terminar los cambios.
