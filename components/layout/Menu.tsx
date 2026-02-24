@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+type SubMenuItem = { href: string; label: string };
+type MenuItem = { title: string; href: string; subMenu?: SubMenuItem[] };
+
 export default function Menu() {
   const [openMenus, setOpenMenus] = useState<number[]>([]);
 
@@ -14,7 +17,7 @@ export default function Menu() {
     );
   };
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { title: 'Home', href: '/' },
     { title: 'Menu', href: '/#menu' },
     { title: 'Contacto', href: '/contact' },
