@@ -86,7 +86,7 @@ export default function HeroSectionTwo() {
             <div className="col-lg-7">
               <div className="hero-content">
                 <span className="tag-line wow fadeInUp inline-block text-theme mb-3" data-wow-delay=".4s">
-                  The best in town
+                  La comida rápida más TOP
                 </span>
 
                 <h1 className="wow fadeInDown text-5xl md:text-6xl font-bold" data-wow-delay=".5s">
@@ -95,7 +95,7 @@ export default function HeroSectionTwo() {
                 </h1>
 
                 <p className="wow fadeInDown mt-4 mb-6 text-gray-600 max-w-xl" data-wow-delay=".6s" >
-                  Savor the perfection of our Savory Symphony Burger — flame-grilled Angus, aged cheddar, and handcrafted sauces for the ultimate taste.
+                  Donde quieras, cuando quieras. Sabor colombiano en el corazón de Florida.
                 </p>
 
                 <div className="hero-button wow fadeInDown" data-wow-delay=".7s">

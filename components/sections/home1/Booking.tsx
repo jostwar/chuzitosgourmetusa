@@ -112,7 +112,7 @@ const BookingSection = () => {
                       <div className="col-lg-12">
                         <div className="form_group text-center">
                           <button type="submit" className="theme-btn style-one">
-                            Book a Table
+                            Reserva
                           </button>
                         </div>
                       </div>

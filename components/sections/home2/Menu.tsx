@@ -1,110 +1,111 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useMemo } from 'react';
+import { menuItems } from '@/lib/menu';
+import { useCart } from '@/context/CartContext';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const KebabMenuSlider = () => {
-const menuItems = [
-  {
-    id: 1,
-    title: 'Shish Kebab',
-    price: 42,
-    imgSrc: 'assets/images/home-beef/menu/kb_1.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-  {
-    id: 2,
-    title: 'Doner Kebab',
-    price: 39,
-    imgSrc: 'assets/images/home-beef/menu/kb_2.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-  {
-    id: 3,
-    title: 'Chapli Kebab',
-    price: 35,
-    imgSrc: 'assets/images/home-beef/menu/kb_3.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-  {
-    id: 4,
-    title: 'Kofta Kebab',
-    price: 33,
-    imgSrc: 'assets/images/home-beef/menu/kb_4.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-  {
-    id: 5,
-    title: 'Shish Kebab',
-    price: 43,
-    imgSrc: 'assets/images/home-beef/menu/kb_5.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-  {
-    id: 6,
-    title: 'Shish Kebab',
-    price: 33,
-    imgSrc: 'assets/images/home-beef/menu/kb_4.jpg',
-    link: '/cart',
-    details: '/menu-details',
-  },
-];
+const CHUZO_DESGRANADO = 'CHUZO DESGRANADO';
+const IMG_WIDTH = 348;
+const IMG_HEIGHT = 430;
 
+const KebabMenuSlider = () => {
+  const router = useRouter();
+  const chuzoItems = useMemo(
+    () => menuItems.filter((item) => item.category === CHUZO_DESGRANADO),
+    []
+  );
+  const { addItem } = useCart();
 
   return (
-    <section className="kebab-menu-section pt-80 pb-90">
+    <section className="kebab-menu-section chuzo-desgranado-slider pt-80 pb-90">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            {/* Section Title */}
             <div className="section-title text-center mb-45 wow fadeInDown">
               <span className="sub-title">
-                <i className="flaticon-food-tray"></i>Kebab Corner
+                <i className="flaticon-healthy-food"></i>Menu Chuzos Desgranados
               </span>
-              <h2>Delights of Our Kebab</h2>
+              <h2>Disfruta el autentico sabor Barranquillero</h2>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container-fluid">
+      <div className="container-fluid chuzo-desgranado-slider-wrap">
         <Swiper
-            modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={30}
-            slidesPerView={5}
-            loop={true}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            navigation={true}
-          >
-          {menuItems.map(({ id, title, price, imgSrc, details, link }) => (
-            <SwiperSlide key={id}>
-              <div className="menu-item style-nine mb-40">
-                <div className="menu-thumbnail">
-                  <img src={imgSrc} alt={`${title} Image`} />
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={24}
+          slidesPerView={3}
+          loop={chuzoItems.length >= 3}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation={true}
+          breakpoints={{
+            320: { slidesPerView: 1, spaceBetween: 16 },
+            576: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 24 },
+            992: { slidesPerView: 3, spaceBetween: 24 },
+            1200: { slidesPerView: 4, spaceBetween: 24 },
+          }}
+        >
+          {chuzoItems.map((item, index) => (
+            <SwiperSlide key={`${item.title}-${index}`} className="chuzo-desgranado-slide">
+              <div className="menu-item style-nine chuzo-desgranado-card">
+                <div className="menu-thumbnail menu-thumbnail-348x430">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={IMG_WIDTH}
+                    height={IMG_HEIGHT}
+                    className="chuzo-desgranado-img"
+                  />
                   <div className="hover-content">
                     <div className="menu-content-wrap">
                       <div className="menu-info">
                         <h3 className="title">
-                          <a href={details}>{title}</a>
+                          <Link href="/menu-details">{item.title}</Link>
                         </h3>
                         <p className="price">
-                          <span className="currency">$</span>
-                          {price}
+                          {item.price === '0.00' ? (
+                            'Consultar'
+                          ) : (
+                            <>
+                              <span className="currency">$</span>
+                              {item.price}
+                            </>
+                          )}
                         </p>
                       </div>
                       <div className="menu-button">
-                        <a href={link} className="cart-button">
-                          <i className="far fa-shopping-cart"></i>
-                        </a>
+                        {item.price !== '0.00' ? (
+                          <button
+                            type="button"
+                            className="cart-button"
+                            onClick={() => {
+                              addItem({
+                                id: `menu-${item.title}-${item.category}`,
+                                title: item.title,
+                                price: parseFloat(item.price),
+                                img: item.img,
+                                category: item.category,
+                              });
+                              router.push('/cart');
+                            }}
+                          >
+                            <i className="far fa-shopping-cart"></i>
+                          </button>
+                        ) : (
+                          <Link href="/contact" className="cart-button">
+                            <i className="far fa-shopping-cart"></i>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -122,7 +122,7 @@ Time: ${formData.time}`);
                 <div className="col-lg-12">
                   <div className="form_group">
                     <button type="submit" className="theme-btn style-one">
-                      Book A Table
+                      Reserva
                     </button>
                   </div>
                 </div>

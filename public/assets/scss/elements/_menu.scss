@@ -547,10 +547,23 @@
             @media #{$xs}{
                 margin-bottom: 25px;
             }
-            & > img{
+            & > img,
+            & .menu-circle-img{
+                width: 160px !important;
+                height: 160px !important;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            &.menu-thumbnail-circle {
                 width: 160px;
                 height: 160px;
                 border-radius: 50%;
+                overflow: hidden;
+                & img {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover;
+                }
             }
             & .menu-after{
                 position: absolute;
@@ -882,6 +895,40 @@
     }
 }
 
+
+/* Menu category filters – estilo pill melocotón, icono + texto naranja */
+.menu-category-filters {
+    .menu-filter-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        border-radius: 50px;
+        border: none;
+        background-color: #F5E5DC;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: #c2380a;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        i {
+            font-size: 1.1em;
+            line-height: 1;
+            color: inherit;
+        }
+        &:hover {
+            background-color: #edd5c9;
+            color: #a32f08;
+        }
+        &.active {
+            background-color: $primary-color;
+            color: $white-color;
+            i { color: $white-color; }
+        }
+    }
+}
 
 .description-content-wrapper{
     & .content-box{

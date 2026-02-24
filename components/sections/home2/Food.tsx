@@ -3,72 +3,73 @@ import Link from 'next/link';
 
 export default function FoodSection() {
   return (
-    <section className="our-food-section pt-130">
+    <section className="our-food-section pt-90">
       <div className="container">
+        {/* Section Title - fila aparte para alinear las 3 imágenes por arriba */}
         <div className="row">
-          {/* Left Column */}
-          <div className="col-xl-4 col-md-6">
-            {/* Section Title */}
-            <div className="section-title mb-50 wow fadeInDown">
+          <div className="col-12">
+            <div className="section-title mb-50 wow fadeInDown text-center">
               <span className="sub-title">
-                <i className="flaticon-food-tray"></i>Food Items
+                <i className="flaticon-burger"></i>#ModoChuzitos
               </span>
-              <h2>Our Delicious Offerings</h2>
+              <h2>Antojos para todos</h2>
             </div>
+          </div>
+        </div>
 
-            {/* Food Item */}
+        <div className="row align-items-start">
+          {/* Left Column - imagen 410x455 */}
+          <div className="col-xl-4 col-md-6">
             <div className="food-item mb-50">
               <div className="food-thumbnail wow fadeInUp">
                 <Image
-                  src="/assets/images/home-beef/about/food1.jpg"
-                  alt="Food Image"
-                  width={400}
-                  height={300}
+                  src="/assets/images/home-beef/about/food1.png"
+                  alt="Maíz con salsa Chuzitos Gourmet"
+                  width={410}
+                  height={455}
                 />
               </div>
             </div>
           </div>
 
-          {/* Center Column */}
+          {/* Center Column - imagen 410x343 + caja de pedido */}
           <div className="col-xl-4 col-md-6">
-            {/* Food Item */}
             <div className="food-item mb-50 wow fadeInDown">
               <div className="food-thumbnail">
                 <Image
-                  src="/assets/images/home-beef/about/food2.jpg"
-                  alt="Food Image"
-                  width={400}
-                  height={300}
+                  src="/assets/images/home-beef/about/food2.png"
+                  alt="Menú infantil Chuzitos Gourmet"
+                  width={410}
+                  height={343}
                 />
               </div>
             </div>
 
-            {/* Order Box */}
             <div className="iconic-info-box style-two mb-50 wow fadeInUp">
               <div className="icon">
                 <i className="far fa-phone-alt"></i>
               </div>
               <div className="content">
-                <h4 className="title">Get online order now</h4>
+                <h4 className="title">Ordena en línea ahora</h4>
                 <h4>
-                  <Link href="tel:08003458789">0-800-345-8789</Link>
+                  <Link href="tel:+17866582780">+1 (786) 658-2780</Link>
                 </h4>
                 <Link href="/contact" className="theme-btn style-one">
-                  Order Now
+                  Ordenar ahora
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* Right Column - imagen 410x695 */}
           <div className="col-xl-4 col-md-12">
             <div className="food-item mb-50 wow fadeInRight">
               <div className="food-thumbnail">
                 <Image
-                  src="/assets/images/home-beef/about/food3.jpg"
-                  alt="Food Image"
-                  width={400}
-                  height={300}
+                  src="/assets/images/home-beef/about/food3.png"
+                  alt="Pollo y papas Chuzitos Gourmet"
+                  width={410}
+                  height={695}
                 />
               </div>
             </div>

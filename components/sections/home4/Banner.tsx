@@ -39,8 +39,7 @@ const HeroSection = () => {
                   Cheese Delight Pizza
                 </h1>
                 <p className="wow fadeInDown" data-wow-delay=".6s">
-                  Savor the perfection of our Italian Cheese Pizza—crispy golden
-                  crust, premium mozzarella, Parmesan, and ricotta...
+                  Donde quieras, cuando quieras. Sabor colombiano en el corazón de Florida.
                 </p>
                 <div className="hero-button wow fadeInDown" data-wow-delay=".7s">
                   <Link href="/contact" className="theme-btn style-one">

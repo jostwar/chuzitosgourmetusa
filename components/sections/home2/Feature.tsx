@@ -8,24 +8,24 @@ export default function FeaturesSection() {
       description: 'We Ensure Secure Payment',
     },
     {
-      icon: 'flaticon-return-on-investment',
-      title: 'Money Returns',
-      description: 'Return It Within 30 Days',
+      icon: 'flaticon-free-shipping',
+      title: 'DoorDash',
+      description: '',
     },
     {
       icon: 'flaticon-free-shipping',
-      title: 'Free Shipping',
-      description: 'Free Shipping On All Us',
+      title: 'Uber Eats',
+      description: '',
     },
     {
-      icon: 'flaticon-24-hours',
-      title: 'Support 24/7',
-      description: 'Contact 24 Hours A Day',
+      icon: 'fas fa-map-marker-alt',
+      title: 'Visítanos',
+      description: 'Doral - Kendall - Wynwood',
     },
   ];
 
   return (
-    <section className="features-section gray-bg pt-60 pb-30">
+    <section className="features-section gray-bg pt-50 pb-50">
       <div className="container">
         <div className="row">
           {features.map((feature, index) => (
@@ -33,7 +33,7 @@ export default function FeaturesSection() {
               className="col-xl-3 col-md-6 col-sm-12"
               key={index}
             >
-              <div className="iconic-info-box style-three mb-30 wow fadeInUp" data-wow-delay={`${index * 0.2}s`}>
+              <div className="iconic-info-box style-three mb-0 wow fadeInUp" data-wow-delay={`${index * 0.2}s`}>
                 <div className="icon">
                   <i className={feature.icon}></i>
                 </div>

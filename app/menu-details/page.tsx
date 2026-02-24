@@ -201,7 +201,7 @@ export default function MenuDetailsPage() {
                 </div>
               </div>
 
-              {/* Foodix Banners */}
+              {/* Banners */}
               <div className="col-xl-6">
                 <div className="foodix-banner-wrapper">
                   <div className="foodix-banner-item style-three mb-30 wow fadeInUp">

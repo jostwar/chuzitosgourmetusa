@@ -42,14 +42,13 @@ const HeroSection = () => {
             <div className="col-xl-8">
               <div className="hero-content">
                 <span className="tag-line wow fadeInDown" data-wow-delay=".5s">
-                  Hot for every Friday
+                  La comida rápida más TOP
                 </span>
                 <h1 className="wow fadeInUp" data-wow-delay=".6s">
                   Sushi Flavors Redefined
                 </h1>
                 <p className="wow fadeInDown" data-wow-delay=".7s">
-                  Cluckin' Good Chicken Delight: A savory haven for chicken lovers offering 
-                  meticulously crafted dishes bursting with flavor.
+                  Donde quieras, cuando quieras. Sabor colombiano en el corazón de Florida.
                 </p>
                 <div className="hero-button wow fadeInUp" data-wow-delay=".75s">
                   <Link href="/contact" className="theme-btn style-one">Order Now</Link>

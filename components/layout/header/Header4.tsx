@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Menu from '../Menu';
 
@@ -21,6 +22,8 @@ export default function Header({
   isSidebar,
   handleSidebar,
 }: HeaderProps) {
+  const { items: cartItems } = useCart();
+  const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -56,10 +59,11 @@ export default function Header({
               <div className="site-branding">
                 <Link href="/" className="brand-logo">
                   <Image
-                    src="/assets/images/logo/logo-white2.png"
-                    alt="Logo"
-                    width={150}
-                    height={40}
+                    src="https://chuzitos.s3.us-west-2.amazonaws.com/ChuzitosLogo2.png"
+                    alt="Chuzitos Gourmet USA"
+                    width={200}
+                    height={150}
+                    className="chuzitos-logo"
                   />
                 </Link>
               </div>
@@ -71,10 +75,11 @@ export default function Header({
                     <div className="mobile-logo mb-30 d-block d-xl-none text-center">
                       <Link href="/" className="brand-logo">
                         <Image
-                          src="/assets/images/logo/logo-main.png"
-                          alt="Logo"
-                          width={150}
-                          height={40}
+                          src="https://chuzitos.s3.us-west-2.amazonaws.com/ChuzitosLogo2.png"
+                          alt="Chuzitos Gourmet USA"
+                          width={200}
+                          height={150}
+                          className="chuzitos-logo"
                         />
                       </Link>
                     </div>
@@ -86,11 +91,14 @@ export default function Header({
                 <div className="nav-right-item">
                   <div className="nav-button d-none d-xl-block">
                     <Link href="/contact" className="theme-btn style-one">
-                      Book A Table
+                      Reserva
                     </Link>
                   </div>
-                  <Link href="/cart" className="cart-button">
+                  <Link href="/cart" className="cart-button" aria-label={`Carrito${cartCount > 0 ? `: ${cartCount} artículo${cartCount !== 1 ? 's' : ''}` : ' (vacío)'}`}>
                     <i className="far fa-shopping-cart"></i>
+                    {cartCount > 0 && (
+                      <span className="cart-count-badge">{cartCount > 99 ? '99+' : cartCount}</span>
+                    )}
                   </Link>
 
                   {/*=== Mobile Toggle ===*/}

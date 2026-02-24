@@ -15,54 +15,9 @@ export default function Menu() {
   };
 
   const menuItems = [
-    {
-      title: 'Home',
-      subMenu: [
-        { href: '/', label: 'Home Restaurant' },
-        { href: '/index-beef', label: 'Home Beef' },
-        { href: '/index-burger', label: 'Home Burger' },
-        { href: '/index-pizza', label: 'Home Pizza' },
-        { href: '/index-sushi', label: 'Home Sushi' },
-      ],
-    },
-    {
-      title: 'Menu',
-      subMenu: [
-        { href: '/menu-v1', label: 'Menu List One' },
-        { href: '/menu-v2', label: 'Menu List Two' },
-        { href: '/menu-v3', label: 'Menu Grid' },
-        { href: '/menu-details', label: 'Menu Details' },
-      ],
-    },
-    {
-      title: 'Pages',
-      subMenu: [
-        { href: '/about', label: 'About Us' },
-        { href: '/history', label: 'Our History' },
-        { href: '/chefs', label: 'Our Chefs' },
-        { href: '/gallery', label: 'Our Gallery' },
-        { href: '/faq', label: 'Faqs' },
-        { href: '/404', label: 'Error 404' },
-      ],
-    },
-    {
-      title: 'Shop',
-      subMenu: [
-        { href: '/products', label: 'Our Shop' },
-        { href: '/menu-details', label: 'Product Details' },
-        { href: '/cart', label: 'Cart' },
-        { href: '/checkout', label: 'Checkout' },
-      ],
-    },
-    {
-      title: 'Blog',
-      subMenu: [
-        { href: '/blog-grid', label: 'Blog Grid' },
-        { href: '/blog-classic', label: 'Blog Standard' },
-        { href: '/blog-details', label: 'Blog Details' },
-      ],
-    },
-    { title: 'Contact', href: '/contact' },
+    { title: 'Home', href: '/' },
+    { title: 'Menu', href: '/#menu' },
+    { title: 'Contacto', href: '/contact' },
   ];
 
   return (

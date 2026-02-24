@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function BannerSection() {
   return (
     <section className="foodix-banner-section gray-bg">
-      {/*=== Foodix Banner ===*/}
+      {/*=== Banner ===*/}
       <div className="foodix-banner-v1">
         <div className="container-fluid">
           <div className="row">

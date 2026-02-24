@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 export default function ReservationSection() {
   const [formData, setFormData] = useState({
@@ -26,14 +25,15 @@ export default function ReservationSection() {
 
   return (
     <section className="reservation-section">
-      <div className="booking-wrapper-two bg_cover pt-120 pb-130" style={{ position: 'relative' }}>
-        <Image
-          src="/assets/images/bg/booking-bg.png"
-          alt="Booking Background"
-          fill
-          className="object-cover"
-          priority
-        />
+      <div
+        className="booking-wrapper-two bg_cover pt-120 pb-130"
+        style={{
+          backgroundImage: 'url(https://chuzitos.s3.us-west-2.amazonaws.com/backgroundsections.png)',
+          backgroundRepeat: 'repeat',
+          backgroundSize: 'auto',
+          position: 'relative',
+        }}
+      >
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row">
             <div className="col-lg-6">
@@ -145,7 +145,7 @@ export default function ReservationSection() {
                     <div className="col-lg-12">
                       <div className="form_group">
                         <button type="submit" className="theme-btn style-one">
-                          Book a Table
+                          Reserva
                         </button>
                       </div>
                     </div>

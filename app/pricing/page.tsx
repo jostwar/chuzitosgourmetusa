@@ -94,7 +94,7 @@ export default function PricingPage() {
                     availability for our customers every day.
                   </p>
                   <a href="contact.html" className="theme-btn style-one">
-                    Book A Table
+                    Reserva
                   </a>
                 </div>
               </div>

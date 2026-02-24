@@ -13,6 +13,7 @@ interface LayoutProps {
   headerStyle?: 1 | 2 | 3 | 4;
   footerStyle?: 1 | 2;
   breadcrumbTitle?: string;
+  breadcrumbBannerBg?: "default" | "footer";
   wrapperCls?: string;
   children: ReactNode;
 }
@@ -21,6 +22,7 @@ export default function Layout({
   headerStyle,
   footerStyle,
   breadcrumbTitle,
+  breadcrumbBannerBg = "default",
   wrapperCls,
   children,
 }: LayoutProps) {
@@ -41,7 +43,7 @@ export default function Layout({
         <LayoutClientFeatures headerStyle={headerStyle} />
 
         {/* Optional breadcrumb */}
-        {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} />}
+        {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} bannerBg={breadcrumbBannerBg} />}
 
         {/* Page content */}
         {children}

@@ -18,14 +18,13 @@ export default function HeroSection() {
             <div className="col-xl-6 order-2 order-xl-1">
               <div className="hero-content">
                 <span className="tag-line wow fadeInDown" data-wow-delay=".5s">
-                  Hot for every Sunday
+                  La comida rápida más TOP
                 </span>
                 <h1 className="wow fadeInUp" data-wow-delay=".6s">
                   Enjoy our <span>delicious</span> food
                 </h1>
                 <p className="wow fadeInDown" data-wow-delay=".7s">
-                  Savor the taste of our delicious, expertly crafted dishes made with the finest
-                  ingredients, offering a perfect blend of flavors.
+                  Donde quieras, cuando quieras. Sabor colombiano en el corazón de Florida.
                 </p>
                 <div className="hero-button wow fadeInUp" data-wow-delay=".75s">
                   <Link href="/" className="theme-btn style-one">

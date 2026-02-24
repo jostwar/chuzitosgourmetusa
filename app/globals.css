@@ -1,0 +1,544 @@
+/* Chuzitos Gourmet - Variables de marca */
+:root {
+  --color-primary: #D4420A;
+  --color-secondary: #F5C500;
+  --color-dark: #3D1F0A;
+  --color-bg: #1A0D05;
+}
+
+/* Home: fondo #e74f96 con 80% transparencia (20% opacidad) en Features y Menu */
+.features-section,
+.biryani-menu-section {
+  background-color: rgba(231, 79, 150, 0.2) !important;
+}
+
+/* Menú: quitar borde/sombra oscura a la izquierda de las imágenes (style-ten) */
+.biryani-menu-section .menu-item.style-ten .menu-thumbnail {
+  box-shadow: none !important;
+}
+.biryani-menu-section .menu-item.style-ten .menu-thumbnail.menu-thumbnail-circle,
+.biryani-menu-section .menu-item.style-ten .menu-thumbnail .menu-circle-img {
+  box-shadow: none !important;
+  border: none !important;
+}
+/* El overlay .menu-after genera borde/sombra oscura a la izquierda; ocultarlo en esta sección */
+.biryani-menu-section .menu-item.style-ten .menu-thumbnail .menu-after {
+  display: none !important;
+}
+
+/* Footer: imagen de fondo (footer.png) con 80% transparencia */
+.footer-default {
+  background-color: transparent;
+  position: relative;
+}
+.footer-default.footer-bg-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("https://chuzitos.s3.us-west-2.amazonaws.com/footer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* mismo fondo continuo al hacer scroll */
+  opacity: 0.05; /* 5% opacidad = 95% transparencia */
+}
+.footer-default.footer-bg-image > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Eventos y Reservations: misma imagen de fondo y 95% transparencia */
+.booking-section .booking-wrapper-three {
+  position: relative;
+  background-image: none !important;
+}
+.booking-section .booking-wrapper-three::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("https://chuzitos.s3.us-west-2.amazonaws.com/footer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* mismo fondo continuo al hacer scroll */
+  opacity: 0.05; /* 95% transparencia */
+  pointer-events: none;
+}
+.booking-section .booking-wrapper-three > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Banner de página (ej. Carrito): fondo negro + imagen superpuesta (misma que footer) */
+.page-banner .page-banner-footer-bg {
+  position: relative;
+  background-color: #000 !important;
+  background-image: none !important;
+}
+.page-banner .page-banner-footer-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("https://chuzitos.s3.us-west-2.amazonaws.com/footer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.05; /* 95% transparencia */
+  pointer-events: none;
+}
+
+/* Toast al añadir al carrito */
+.cart-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  animation: cart-toast-in 0.3s ease;
+}
+.cart-toast i {
+  color: #efb410;
+  font-size: 1.2em;
+}
+@keyframes cart-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Carrito: celda producto con imagen y título en fila (título al lado, no debajo) */
+.cart-item-cell {
+  display: flex !important;
+  align-items: center;
+  gap: 16px;
+}
+.cart-item-cell .cart-item-img {
+  flex-shrink: 0;
+}
+.cart-item-cell .cart-item-title {
+  flex: 1;
+  min-width: 0;
+}
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+.cart-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Carrito: leyenda pick-up / consumo en sede + delivery */
+.cart-pickup-legend {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  background: rgba(212, 66, 10, 0.08);
+  border-left: 4px solid var(--color-primary, #D4420A);
+  color: #3D1F0A;
+  line-height: 1.4;
+}
+.cart-pickup-title {
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.cart-pickup-subtitle {
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.cart-delivery-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cart-delivery-buttons .btn-platform {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.cart-delivery-buttons .btn-platform-pending {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Botones: color #efb410 */
+.theme-btn.style-one {
+  background-color: #efb410 !important;
+  color: #1a1a1a !important;
+  border-color: #efb410 !important;
+}
+.theme-btn.style-one:hover {
+  background-color: #d9a20e !important;
+  color: #1a1a1a !important;
+  border-color: #d9a20e !important;
+}
+.theme-btn.style-two {
+  border-color: #efb410 !important;
+  color: #efb410 !important;
+}
+.theme-btn.style-two:hover {
+  background-color: #efb410 !important;
+  color: #1a1a1a !important;
+  border-color: #efb410 !important;
+}
+
+/* Botones de categoría del menú (CHUZO DESGRANADO, ASADOS, etc.): #efb410 */
+.menu-category-filters .menu-filter-btn {
+  background-color: #efb410 !important;
+  color: #1a1a1a !important;
+}
+.menu-category-filters .menu-filter-btn i {
+  color: #1a1a1a !important;
+}
+.menu-category-filters .menu-filter-btn:hover {
+  background-color: #d9a20e !important;
+  color: #1a1a1a !important;
+}
+.menu-category-filters .menu-filter-btn:hover i {
+  color: #1a1a1a !important;
+}
+.menu-category-filters .menu-filter-btn.active {
+  background-color: #d9a20e !important;
+  color: #1a1a1a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.menu-category-filters .menu-filter-btn.active i {
+  color: #1a1a1a !important;
+}
+
+/* Menú: precio + cantidad + añadir en una fila; mismo tamaño, forma y color */
+.menu-info-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.menu-info-actions .price {
+  margin-right: 4px;
+}
+
+/* Recuadro cantidad y botón Añadir: altura y estilo unificado */
+.menu-info-actions .menu-quantity,
+.menu-info-actions .btn-add-cart-sm {
+  height: 38px;
+  min-height: 38px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #efb410;
+  border-radius: 8px;
+  background: #fff;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+.menu-info-actions .menu-quantity {
+  padding: 0;
+  width: auto;
+  min-width: 110px;
+}
+.menu-info-actions .menu-quantity .quantity {
+  width: 32px;
+  text-align: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.menu-info-actions .menu-quantity button {
+  padding: 0 10px;
+  min-width: 36px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #1a1a1a;
+}
+.menu-info-actions .menu-quantity button:hover {
+  background: rgba(239, 180, 16, 0.15);
+  color: #1a1a1a;
+}
+.menu-info-actions .btn-add-cart-sm {
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-info-actions .btn-add-cart-sm:hover {
+  background: rgba(239, 180, 16, 0.15);
+  border-color: #efb410;
+  color: #1a1a1a;
+}
+.menu-info-actions .btn-add-cart-sm i {
+  margin-right: 6px;
+  color: inherit;
+}
+
+/* Títulos de sección tipo botón (sub-title): #442683 */
+.section-title .sub-title {
+  background-color: #442683 !important;
+  color: #fff !important;
+  border-color: #442683 !important;
+}
+/* Igual en la sección del menú y demás secciones */
+.kebab-menu-section .section-title .sub-title,
+.our-food-section .section-title .sub-title,
+.foodix-menu-section .section-title .sub-title,
+.booking-section .section-title .sub-title,
+#eventos .section-title .sub-title {
+  background-color: #442683 !important;
+  color: #fff !important;
+  border-color: #442683 !important;
+}
+
+/* Header transparente al hacer scroll - fondo Chuzitos */
+.header-area.transparent-header.sticky {
+  background-color: #442683 !important;
+}
+
+/* Color del menú del header */
+.header-area.transparent-header .header-navigation .main-menu ul li > a {
+  color: #efb410;
+}
+.header-area.transparent-header .header-navigation .main-menu ul li:hover > a {
+  color: #efb410;
+}
+@media (max-width: 1199px) {
+  .header-area.transparent-header .header-navigation .foodix-nav-menu .main-menu ul li > a {
+    color: #efb410;
+  }
+}
+
+/* Reservations y Eventos: fondo negro y overlay 80% sobre el mosaico */
+.booking-section,
+#eventos {
+  background-color: #000 !important;
+}
+#eventos .booking-wrapper-three::after,
+.booking-section .booking-wrapper-three::after {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Sección Eventos - recuadro imagen derecha */
+.eventos-image-box {
+  border: 4px solid var(--color-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  margin-left: auto;
+}
+.eventos-image-box .eventos-box-img {
+  display: block;
+  vertical-align: middle;
+}
+
+/* Hero: logo Chuzitos ~30% más grande */
+.hero-wrapper-five .hero-content .hero-logo-img {
+  max-height: 364px !important;
+}
+@media (min-width: 1400px) {
+  .hero-wrapper-five .hero-content .hero-logo-img {
+    max-height: 364px !important;
+  }
+}
+@media (max-width: 1199px) {
+  .hero-wrapper-five .hero-content .hero-logo-img {
+    max-height: 234px !important;
+  }
+}
+@media (max-width: 991px) {
+  .hero-wrapper-five .hero-content .hero-logo-img {
+    max-height: 182px !important;
+  }
+}
+@media (max-width: 767px) {
+  .hero-wrapper-five .hero-content .hero-logo-img {
+    max-height: 130px !important;
+  }
+}
+
+/* Hero: logo centrado */
+.hero-wrapper-five .hero-content .hero-logo-wrap {
+  width: 100%;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.hero-wrapper-five .hero-content .hero-logo-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero: subir un poco el logo (quedaba muy abajo) */
+.hero-wrapper-five .hero-content .hero-logo-wrap {
+  margin-top: -80px !important;
+}
+@media (max-width: 991px) {
+  .hero-wrapper-five .hero-content .hero-logo-wrap {
+    margin-top: -55px !important;
+  }
+}
+@media (max-width: 767px) {
+  .hero-wrapper-five .hero-content .hero-logo-wrap {
+    margin-top: -40px !important;
+  }
+}
+
+/* Carrito: ingredientes adicionales (solo Salchipapas / Chuzo Desgranado, sin imagen) */
+.cart-addons-row .cart-addons-cell {
+  border-top: none !important;
+  padding-top: 0;
+  padding-left: 0;
+  vertical-align: top;
+}
+.cart-addons {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.cart-addons-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.cart-addons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cart-addons-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+.cart-addons-item .cart-addons-name {
+  flex: 1 1 140px;
+  font-weight: 500;
+}
+.cart-addons-item .cart-addons-price {
+  color: var(--color-primary, #D4420A);
+  font-weight: 600;
+  min-width: 4ch;
+}
+.cart-addons-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cart-addons-qty-btn {
+  width: 32px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #f5f5f5;
+  color: var(--color-dark, #333);
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+.cart-addons-qty-btn:hover {
+  background: var(--color-primary, #D4420A);
+  color: #fff;
+}
+.cart-addons-qty-value {
+  min-width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  background: #fff;
+}
+.cart-addons-selected {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Header: icono del carrito y badge de cantidad */
+.nav-right-item .cart-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-right-item .cart-button i {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: var(--color-primary, #D4420A);
+  border-radius: 999px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) {
+  .nav-right-item .cart-button i {
+    font-size: 1.15rem;
+  }
+  .cart-count-badge {
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    font-size: 10px;
+    line-height: 18px;
+    border-width: 1.5px;
+  }
+}

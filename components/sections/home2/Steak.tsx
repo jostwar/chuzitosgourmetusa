@@ -19,9 +19,9 @@ export default function SteakMenuSection() {
           <div className="col-lg-12">
             <div className="section-title text-center mb-55 wow fadeInDown">
               <span className="sub-title">
-                <i className="flaticon-food-tray"></i> Steak House
+                <i className="flaticon-food-tray"></i> Asados
               </span>
-              <h2>Savor the Finest Steaks</h2>
+              <h2>Acompañado de papas a la francesa y ensalada</h2>
             </div>
           </div>
         </div>

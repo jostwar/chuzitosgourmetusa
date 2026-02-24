@@ -21,6 +21,30 @@
     }
 }
 
+/* Header sobre hero: menú y botones #f4b715 */
+.header-area.transparent-header .header-navigation .main-menu ul li > a {
+    color: #f4b715;
+}
+.header-area.transparent-header .header-navigation .main-menu ul li:hover > a {
+    color: #fff;
+}
+.header-area.transparent-header:not(.sticky) .nav-right-item .theme-btn.style-one {
+    background-color: #f4b715;
+    color: #1a1a1a;
+    &:hover {
+        background-color: #e0a60c;
+        color: #1a1a1a;
+    }
+}
+.header-area.transparent-header:not(.sticky) .nav-right-item .cart-button {
+    background-color: #f4b715;
+    color: #1a1a1a;
+    &:hover {
+        background-color: #e0a60c;
+        color: #1a1a1a;
+    }
+}
+
 /* Header Navigation */
 
 .header-navigation{

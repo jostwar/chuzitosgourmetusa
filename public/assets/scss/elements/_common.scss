@@ -150,6 +150,7 @@ ul.social-link{
 
 .primary-dark-bg{
     @extend %primary-dark-bg;
+    background-color: #442683;
 }
 .gray-bg{
     @extend %gray-bg;
@@ -180,6 +181,29 @@ ul.social-link{
         background-color: transparent;
         border: 1px solid $primary-color;
         border-radius: 10px;
+    }
+}
+
+/* Botones en secciones con fondo oscuro (#442683): acento #f4b715 */
+.primary-dark-bg .theme-btn.style-one,
+.footer-default .theme-btn.style-one,
+.hero-wrapper-four .theme-btn.style-one {
+    background-color: #f4b715;
+    color: #1a1a1a;
+    &:hover {
+        background-color: #e0a60c;
+        color: #1a1a1a;
+    }
+}
+.primary-dark-bg .theme-btn.style-two,
+.footer-default .theme-btn.style-two,
+.hero-wrapper-four .theme-btn.style-two {
+    border-color: #f4b715;
+    color: #f4b715;
+    &:hover {
+        background-color: #f4b715;
+        color: #1a1a1a;
+        border-color: #f4b715;
     }
 }
 

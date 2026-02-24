@@ -4,10 +4,7 @@ import Link from 'next/link';
 const BookingSection = () => {
   return (
     <section className="booking-section">
-      <div
-        className="booking-wrapper-three bg_cover pt-130 pb-80"
-        style={{ backgroundImage: 'url(assets/images/home-beef/bg/booking-bg.jpg)' }}
-      >
+      <div className="booking-wrapper-three bg_cover pt-130 pb-80">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -15,16 +12,16 @@ const BookingSection = () => {
               <div className="section-content-box wow fadeInLeft mb-50">
                 <div className="section-title mb-50 text-white">
                   <span className="sub-title">
-                    <i className="flaticon-food-tray"></i>Reservation
+                    <i className="far fa-calendar-alt"></i>Reserva
                   </span>
                   <h2>
-                    Need reservation? <br /> booking your table now
+                    ¿Necesitas reserva? <br /> Reserva tu mesa ahora
                   </h2>
                 </div>
                 <div className="happy-button">
-                  <p>Order online</p>
-                  <a href="tel:+555-657-8876" className="theme-btn style-one">
-                    <i className="far fa-phone"></i> +555-657-8876
+                  <p>Reserva en línea</p>
+                  <a href="tel:+17866582780" className="theme-btn style-one">
+                    <i className="far fa-phone"></i> +1 (786) 658-2780
                   </a>
                 </div>
               </div>
@@ -34,7 +31,7 @@ const BookingSection = () => {
               {/* Booking Form Box */}
               <div className="booking-form-box wow fadeInRight mb-50">
                 <div className="booking-title text-center">
-                  <h3>Create An Booking Table</h3>
+                  <h3>Reserva tu mesa</h3>
                 </div>
                 <form className="booking-form">
                   <div className="row">
@@ -43,7 +40,7 @@ const BookingSection = () => {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Enter your name"
+                          placeholder="Tu nombre"
                           name="name"
                           required
                         />
@@ -55,7 +52,7 @@ const BookingSection = () => {
                         <input
                           type="email"
                           className="form_control"
-                          placeholder="Enter your Email"
+                          placeholder="Tu correo"
                           name="email"
                           required
                         />
@@ -67,7 +64,7 @@ const BookingSection = () => {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Enter your Phone"
+                          placeholder="Tu teléfono"
                           name="phone"
                           required
                         />
@@ -82,7 +79,7 @@ const BookingSection = () => {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Date"
+                          placeholder="Fecha"
                           id="datepicker"
                           name="date"
                         />
@@ -93,25 +90,25 @@ const BookingSection = () => {
                     </div>
 
                     <div className="col-lg-12">
-                                              <select
-                              id="people"
-                              name="people"
-                              className="form_control wide"
-                              defaultValue="01"
-                              required
-                            >
-                              <option value="01">01 People</option>
-                              <option value="02">02 People</option>
-                              <option value="03">03 People</option>
-                              <option value="04">04 People</option>
-                              <option value="05">05 People</option>
-                            </select>
-                          </div>
+                      <select
+                        id="people"
+                        name="people"
+                        className="form_control wide"
+                        defaultValue="01"
+                        required
+                      >
+                        <option value="01">1 persona</option>
+                        <option value="02">2 personas</option>
+                        <option value="03">3 personas</option>
+                        <option value="04">4 personas</option>
+                        <option value="05">5 personas</option>
+                      </select>
+                    </div>
 
                     <div className="col-lg-12">
                       <div className="form_group text-center">
                         <Link href="/contact" className="theme-btn style-one">
-                          Book a Table
+                          Reserva
                         </Link>
                       </div>
                     </div>

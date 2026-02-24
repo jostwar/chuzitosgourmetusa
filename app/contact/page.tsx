@@ -3,17 +3,17 @@ import Image from "next/image";
 
 export default function ContactPage() {
   return (
-    <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Contact">
-      {/*====== Start Contact Section ======*/}
+    <Layout headerStyle={2} footerStyle={1} breadcrumbTitle="Contacto" breadcrumbBannerBg="footer">
+      {/*====== Sección de contacto ======*/}
       <section className="contact-section pt-120 gray-bg">
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-md-12">
               <div className="contact-wrapper">
                 <div className="section-title mb-50 wow fadeInDown">
-                  <span className="sub-title">Get in touch</span>
+                  <span className="sub-title">Escríbenos</span>
                   <h2>
-                    have questions? <br /> get in touch!
+                    ¿Tienes preguntas? <br /> ¡Contáctanos!
                   </h2>
                 </div>
                 <form className="contact-form wow fadeInUp">
@@ -23,7 +23,7 @@ export default function ContactPage() {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Your Name"
+                          placeholder="Tu nombre"
                           name="name"
                           required
                         />
@@ -34,7 +34,7 @@ export default function ContactPage() {
                         <input
                           type="email"
                           className="form_control"
-                          placeholder="Your Email"
+                          placeholder="Tu correo"
                           name="email"
                           required
                         />
@@ -45,7 +45,7 @@ export default function ContactPage() {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Your Subject"
+                          placeholder="Asunto"
                           name="subject"
                           required
                         />
@@ -56,7 +56,7 @@ export default function ContactPage() {
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Your Service"
+                          placeholder="Motivo"
                           name="service"
                           required
                         />
@@ -67,7 +67,7 @@ export default function ContactPage() {
                         <textarea
                           className="form_control"
                           rows={5}
-                          placeholder="Write message"
+                          placeholder="Escribe tu mensaje"
                           name="message"
                         />
                       </div>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     <div className="col-lg-12">
                       <div className="form_group">
                         <button className="theme-btn style-one">
-                          Submit Now
+                          Enviar
                         </button>
                       </div>
                     </div>
@@ -86,11 +86,12 @@ export default function ContactPage() {
             <div className="col-xl-6 col-md-12 d-none d-xl-block">
               <div className="contact-image-box text-end wow fadeInDown">
                 <Image
-                  src="/assets/images/gallery/contact-1.png"
-                  alt="Contact Image"
-                  width={600}
-                  height={500}
+                  src="https://chuzitos.s3.us-west-2.amazonaws.com/546450254_17951380650008551_4855666058276831025_n.jpg"
+                  alt="Chuzitos Gourmet - Contacto"
+                  width={510}
+                  height={860}
                   className="w-full"
+                  style={{ height: "auto", objectFit: "contain" }}
                 />
               </div>
             </div>
@@ -108,10 +109,11 @@ export default function ContactPage() {
                   <i className="far fa-map-marker-alt"></i>
                 </div>
                 <div className="content">
-                  <h4>Address</h4>
+                  <h4>Dirección</h4>
                   <p>
-                    4140 Parker Rd. Allentown, <br />
-                    New Mexico 31134
+                    Sede Kendall<br />
+                    6605 SW 127th Ave<br />
+                    Miami, FL 33183, USA
                   </p>
                 </div>
               </div>
@@ -122,15 +124,10 @@ export default function ContactPage() {
                   <i className="far fa-envelope"></i>
                 </div>
                 <div className="content">
-                  <h4>Email</h4>
+                  <h4>Correo</h4>
                   <p>
-                    <a href="mailto:foodixsupport@foodix.com">
-                      foodixsupport@foodix.com
-                    </a>
-                  </p>
-                  <p>
-                    <a href="mailto:foodixinfo@foodix.com">
-                      foodixinfo@foodix.com
+                    <a href="mailto:kendall@chuzitosgourmetusa.com">
+                      kendall@chuzitosgourmetusa.com
                     </a>
                   </p>
                 </div>
@@ -139,15 +136,12 @@ export default function ContactPage() {
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div className="iconic-info-box style-one text-center mb-30 wow fadeInDown">
                 <div className="icon">
-                  <i className="far fa-map-marker-alt"></i>
+                  <i className="far fa-phone-alt"></i>
                 </div>
                 <div className="content">
-                  <h4>Phone</h4>
+                  <h4>Teléfono</h4>
                   <p>
-                    <a href="tel:+555-1234567890">+555-123 456 7890</a>
-                  </p>
-                  <p>
-                    <a href="tel:+555-1234567890">+555-123 776 8875</a>
+                    <a href="tel:+17866582780">+1 (786) 658-2780</a>
                   </p>
                 </div>
               </div>
@@ -160,8 +154,9 @@ export default function ContactPage() {
       <section className="contact-map-section">
         <div className="contact-map-box wow fadeInDown">
           <iframe
+            title="Chuzitos Gourmet - Sede Kendall"
             height={600}
-            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd"
+            src="https://maps.google.com/maps?q=6605+SW+127th+Ave,+Miami,+FL+33183&t=&z=16&ie=UTF8&iwloc=&output=embed"
             loading="lazy"
             className="w-full"
           />
