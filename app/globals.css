@@ -41,7 +41,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  opacity: 0.4; /* imagen visible sobre negro */
+  opacity: 0.15; /* 85% transparencia (15% opacidad) */
 }
 .footer-default.footer-bg-image > * {
   position: relative;
