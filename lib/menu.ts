@@ -387,13 +387,6 @@ export const menuItems: MenuItem[] = [
     img: "https://achieveapex-organization-files.s3.us-east-1.amazonaws.com/org_811/products/product_38438/product-media_20251222T132542_70aa2a4db7f990373ca9c376323e3dea__2_.jpeg",
   },
   {
-    title: "Chuzo de",
-    description: "Bollo limpio, queso, papa ripio, lechuga, proteína, salsa de la casa.",
-    price: "17.00",
-    category: "CHUZO DESGRANADO",
-    img: PLACEHOLDER_IMG,
-  },
-  {
     title: "Chuzo Desgranado ChoriButi",
     description: "Bollo limpio, queso, papa ripio, lechuga, chorizo y butifarra, salsa de la casa.",
     price: "17.00",
