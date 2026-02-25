@@ -1,55 +1,44 @@
-# Desplegar Chuzitos Gourmet en AWS Lightsail
+# Desplegar Chuzitos Gourmet en AWS Lightsail + Dominio GoDaddy + SSL/HTTPS
 
-Guía paso a paso para subir esta web (Next.js) a una instancia Lightsail.
-
----
-
-## Requisitos previos
-
-- Cuenta AWS con Lightsail disponible.
-- Tu proyecto en Git (GitHub, GitLab o Bitbucket) para clonar en el servidor, **o** posibilidad de subir archivos (rsync/scp).
+Guía paso a paso para subir esta web (Next.js) a Lightsail, conectar el dominio **chuzitosgourmetusa.com** (GoDaddy) y activar HTTPS con Let's Encrypt.
 
 ---
 
-## Parte 1: Crear y configurar la instancia en Lightsail
+## Datos del proyecto
 
-### 1. Crear instancia
+| Dato | Valor |
+|------|--------|
+| Repo Git | https://github.com/jostwar/chuzitosgourmetusa.git |
+| IP Lightsail (Ubuntu) | **44.253.129.39** |
+| Dominio | **chuzitosgourmetusa.com** |
 
-1. Entra en **AWS Lightsail** → [lightsail.aws.amazon.com](https://lightsail.aws.amazon.com).
-2. **Create instance**.
-3. **Ubicación:** la que prefieras (ej. `us-east-1`).
-4. **Plataforma:** Linux/Unix.
-5. **Blueprint:** **OS Only** → **Ubuntu 22.04 LTS**.
-6. **Plan:** al menos **$5** (512 MB RAM) para desarrollo; para producción mejor **$10** (1 GB) o más.
-7. Nombre de instancia, ej: `chuzitos-web`.
-8. **Create instance**.
+---
 
-### 2. Abrir puertos
+## Parte 1: Configurar la instancia en Lightsail
 
-1. En la instancia → pestaña **Networking**.
-2. **IPv4 firewall:** asegúrate de tener:
+### 1.1 Verificar puertos en el firewall
+
+1. Entra en [AWS Lightsail](https://lightsail.aws.amazon.com) y abre tu instancia Ubuntu.
+2. Pestaña **Networking** → **IPv4 firewall**.
+3. Asegúrate de tener:
    - **SSH (22)** – para conectarte.
-   - **HTTP (80)** – tráfico web.
-   - **Custom:** **3000** – si al inicio quieres probar Next.js en el puerto 3000.
+   - **HTTP (80)** – tráfico web y validación de Certbot.
+   - **HTTPS (443)** – tráfico HTTPS.
 
-(Después podrás usar Nginx en 80 y quitar 3000 si quieres.)
+### 1.2 Conectarte por SSH
 
-### 3. Conectarte por SSH
-
-- En Lightsail, en tu instancia, clic en **Connect using SSH** (abre el navegador en una consola).
-- O desde tu Mac, descarga la clave SSH que Lightsail te da (icono de engranaje de la instancia → **Account** → **SSH keys** → descargar para Lightsail default) y conéctate:
+- En Lightsail: clic en **Connect using SSH** (consola en el navegador),  
+  **o** desde tu Mac:
 
 ```bash
-ssh -i /ruta/a/tu-clave-lightsail.pem ubuntu@TU_IP_PUBLICA
+ssh -i /ruta/a/tu-clave-lightsail.pem ubuntu@44.253.129.39
 ```
-
-Sustituye `TU_IP_PUBLICA` por la IP que muestra Lightsail en la instancia.
 
 ---
 
 ## Parte 2: Instalar Node.js y dependencias en el servidor
 
-En la sesión SSH (como usuario `ubuntu`):
+Dentro de la sesión SSH (usuario `ubuntu`):
 
 ```bash
 # Actualizar sistema
@@ -66,80 +55,44 @@ npm -v
 
 ---
 
-## Parte 3: Subir o clonar el proyecto
-
-### Opción A: Clonar desde Git (recomendado)
-
-Si el código está en GitHub/GitLab:
+## Parte 3: Clonar el proyecto y hacer el build
 
 ```bash
-# En el servidor
 cd ~
 sudo apt install -y git
-git clone https://github.com/TU_USUARIO/TU_REPO.git chuzitosgourmetusa
+git clone https://github.com/jostwar/chuzitosgourmetusa.git chuzitosgourmetusa
 cd chuzitosgourmetusa
-```
 
-Si el repo es privado, configura SSH o un token en lugar de HTTPS.
-
-### Opción B: Subir con rsync desde tu Mac
-
-En **tu Mac** (en la carpeta del proyecto):
-
-```bash
-cd /Users/jarrieta/Desktop/idprojects/apps/chuzitosgourmetusa
-
-# Excluir node_modules y .next (se generan en el servidor)
-rsync -avz --exclude 'node_modules' --exclude '.next' --exclude '.git' \
-  -e "ssh -i /RUTA/A/TU_CLAVE_LIGHTSAIL.pem" \
-  . ubuntu@TU_IP_PUBLICA:~/chuzitosgourmetusa/
-```
-
-Sustituye `TU_IP_PUBLICA` y la ruta de la clave.
-
----
-
-## Parte 4: Build y ejecución en el servidor (standalone)
-
-En el servidor (SSH):
-
-```bash
-cd ~/chuzitosgourmetusa
-
-# Instalar dependencias
+# Instalar dependencias y build
 npm ci
-
-# Build (genera .next/standalone y .next/static)
 npm run build
 
-# Preparar standalone (copia public y .next/static) y arrancar en el puerto 3000
-npm run start:standalone
+# Preparar standalone (copia public y .next/static)
+npm run prepare-standalone
 ```
 
-Deberías poder abrir en el navegador: `http://TU_IP_PUBLICA:3000`.
+Comprobar que existe el servidor standalone:
 
-(Para arrancar solo el servidor sin preparar de nuevo: `npm run prepare-standalone && node .next/standalone/server.js`).
+```bash
+ls -la .next/standalone/server.js
+```
 
 ---
 
-## Parte 5: Dejar la app corriendo siempre (PM2)
+## Parte 4: Dejar la app corriendo con PM2
 
 ```bash
-# Instalar PM2
+# Instalar PM2 globalmente
 sudo npm install -g pm2
 
-cd ~/chuzitosgourmetusa
+cd /home/ubuntu/chuzitosgourmetusa
 
-# Crear script de arranque (opcional)
-echo 'cd /home/ubuntu/chuzitosgourmetusa/.next/standalone && node server.js' > start.sh
-chmod +x start.sh
-
-# Preparar standalone y arrancar con PM2 (desde la raíz del proyecto)
-npm run prepare-standalone
+# Arrancar la app desde el directorio standalone
 pm2 start server.js --name chuzitos -i 1 --cwd /home/ubuntu/chuzitosgourmetusa/.next/standalone
 
 # Que arranque al reiniciar el servidor
 pm2 startup
+# Ejecuta el comando que te muestre (sudo env PATH=...)
 pm2 save
 ```
 
@@ -149,23 +102,52 @@ Comandos útiles:
 - `pm2 logs chuzitos`
 - `pm2 restart chuzitos`
 
+Prueba por IP (si el puerto 3000 está abierto): `http://44.253.129.39:3000`
+
 ---
 
-## Parte 6: Nginx como proxy (opcional, puerto 80)
+## Parte 5: Configurar el dominio en GoDaddy (DNS)
 
-Para usar **HTTP (80)** y/o HTTPS después:
+Antes de instalar Nginx y SSL, apunta el dominio a la IP del servidor.
+
+1. Entra en [GoDaddy](https://www.godaddy.com) → **Mis Productos** → dominio **chuzitosgourmetusa.com**.
+2. **Administrar DNS** (o **DNS** / **Manage DNS**).
+3. Crear o editar registros:
+
+| Tipo | Nombre | Valor | TTL |
+|------|--------|--------|-----|
+| **A** | `@` | `44.253.129.39` | 600 (o 1 hora) |
+| **CNAME** | `www` | `chuzitosgourmetusa.com` | 600 |
+
+- **@** = dominio raíz (chuzitosgourmetusa.com).
+- **www** = www.chuzitosgourmetusa.com (apunta al mismo sitio).
+
+4. Guardar. La propagación DNS puede tardar unos minutos (hasta 24–48 h en casos raros). Puedes comprobar con:
+
+```bash
+dig chuzitosgourmetusa.com +short
+dig www.chuzitosgourmetusa.com +short
+```
+
+Cuando devuelvan `44.253.129.39` (o el CNAME correspondiente), sigue.
+
+---
+
+## Parte 6: Nginx como proxy (puerto 80 y 443)
+
+En el servidor (SSH):
 
 ```bash
 sudo apt install -y nginx
-sudo nano /etc/nginx/sites-available/chuzitos
+sudo nano /etc/nginx/sites-available/chuzitosgourmetusa
 ```
 
-Contenido mínimo:
+Pega esta configuración (solo HTTP por ahora; SSL se añade en la Parte 7):
 
 ```nginx
 server {
     listen 80;
-    server_name TU_IP_O_DOMINIO;
+    server_name chuzitosgourmetusa.com www.chuzitosgourmetusa.com;
     location / {
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
@@ -180,48 +162,87 @@ server {
 }
 ```
 
-Activar y recargar Nginx:
+Activar el sitio y comprobar:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/chuzitos /etc/nginx/sites-enabled/
+sudo ln -sf /etc/nginx/sites-available/chuzitosgourmetusa /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-Cierra el puerto 3000 en el firewall de Lightsail si ya solo quieres usar el 80.
+Prueba en el navegador: `http://chuzitosgourmetusa.com` (y `http://www.chuzitosgourmetusa.com`). Debe cargar la web.
 
 ---
 
-## Parte 7: Actualizar la web después de cambios
+## Parte 7: SSL/HTTPS con Let's Encrypt (Certbot)
 
-Si usas Git:
+En el servidor:
 
 ```bash
-cd ~/chuzitosgourmetusa
+# Instalar Certbot y plugin Nginx
+sudo apt install -y certbot python3-certbot-nginx
+
+# Obtener certificado (Certbot configurará Nginx automáticamente)
+sudo certbot --nginx -d chuzitosgourmetusa.com -d www.chuzitosgourmetusa.com
+```
+
+- Introduce un email para avisos de renovación.
+- Acepta los términos si lo pide.
+- Elige **redirect** para redirigir HTTP → HTTPS.
+
+Comprobar que Nginx quedó con SSL:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Verificar renovación automática:
+
+```bash
+sudo certbot renew --dry-run
+```
+
+En el navegador: **https://chuzitosgourmetusa.com** y **https://www.chuzitosgourmetusa.com** deben abrir con candado (HTTPS).
+
+---
+
+## Parte 8: Resumen de comprobaciones
+
+| Paso | Qué comprobar |
+|------|----------------|
+| 1 | SSH: `ssh ubuntu@44.253.129.39` |
+| 2 | Node: `node -v` (v20.x) |
+| 3 | App: `pm2 status` → chuzitos en “online” |
+| 4 | DNS: `dig chuzitosgourmetusa.com +short` → 44.253.129.39 |
+| 5 | HTTP: `http://chuzitosgourmetusa.com` carga la web |
+| 6 | HTTPS: `https://chuzitosgourmetusa.com` con candado |
+
+---
+
+## Actualizar la web después de cambios en Git
+
+En el servidor (SSH):
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
 git pull
 npm ci
 npm run build
-cp -r public .next/standalone/ 2>/dev/null || true
-cp -r .next/static .next/standalone/.next/ 2>/dev/null || true
+npm run prepare-standalone
 pm2 restart chuzitos
 ```
-
-Si subes con rsync, vuelve a ejecutar rsync, luego en el servidor: `npm ci`, `npm run build`, copias y `pm2 restart chuzitos`.
 
 ---
 
 ## Resumen rápido
 
-| Paso | Acción |
-|------|--------|
-| 1 | Lightsail: crear instancia Ubuntu 22.04 |
-| 2 | Abrir puertos 22, 80 y (opcional) 3000 |
-| 3 | SSH a la instancia |
-| 4 | Instalar Node 20 |
-| 5 | Clonar repo o subir código con rsync |
-| 6 | `npm ci` → `npm run build` |
-| 7 | Copiar `public` y `.next/static` a `.next/standalone` si hace falta |
-| 8 | Arrancar con PM2: `node .next/standalone/server.js` |
-| 9 | (Opcional) Nginx en 80 apuntando a `localhost:3000` |
+1. Lightsail: puertos 22, 80 y 443 abiertos.
+2. Servidor: Node 20, clonar repo, `npm ci` → `npm run build` → `npm run prepare-standalone`.
+3. PM2: `pm2 start server.js ...` desde `.next/standalone` y `pm2 startup` + `pm2 save`.
+4. GoDaddy: A @ → 44.253.129.39, CNAME www → chuzitosgourmetusa.com.
+5. Nginx: proxy en 80 (y luego 443) a `http://127.0.0.1:3000` con `server_name` chuzitosgourmetusa.com y www.
+6. Certbot: `sudo certbot --nginx -d chuzitosgourmetusa.com -d www.chuzitosgourmetusa.com` y redirigir HTTP a HTTPS.
 
-Si me dices si vas a usar **dominio propio** o solo **IP**, puedo ajustarte los pasos (DNS y HTTPS con Let's Encrypt en Nginx).
+Si algo falla, revisa: `pm2 logs chuzitos`, `sudo tail -f /var/log/nginx/error.log` y que el dominio en GoDaddy apunte a **44.253.129.39**.
