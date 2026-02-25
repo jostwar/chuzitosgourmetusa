@@ -327,7 +327,7 @@ export const menuItems: MenuItem[] = [
     description: "Arepa rellena con queso, papa ripio, salsa de la casa y proteína.",
     price: "15.05",
     category: "CHUZO AREPA",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Chuzo+Arepa+Suiza.jpg",
   },
   {
     title: "Chuzo Arepa Especial",
