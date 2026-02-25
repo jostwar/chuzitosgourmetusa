@@ -301,6 +301,58 @@ Si algo falla, revisa: `pm2 logs chuzitos`, `sudo tail -f /var/log/nginx/error.l
 
 ---
 
+## 502 Bad Gateway (Nginx)
+
+Significa que Nginx está activo pero **no puede conectar con la app Node** (puerto 3000). Haz esto por SSH:
+
+### 1. Ver si la app está corriendo
+
+```bash
+pm2 status
+```
+
+Si **chuzitos** está `stopped` o `errored`, la app no está levantada.
+
+### 2. Probar si responde el puerto 3000
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000
+```
+
+- Si devuelve **200**, la app responde; entonces el 502 puede ser por configuración de Nginx (revisa `server_name` y `proxy_pass`).
+- Si falla o no devuelve 200, la app no está escuchando en 3000.
+
+### 3. Levantar o reiniciar la app
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+pm2 delete chuzitos
+pm2 start server.js --name chuzitos -i 1 --cwd /home/ubuntu/chuzitosgourmetusa/.next/standalone
+pm2 save
+```
+
+Si no existe `.next/standalone`, haz antes un build:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+git pull
+npm ci
+npm run build
+npm run prepare-standalone
+pm2 start server.js --name chuzitos -i 1 --cwd /home/ubuntu/chuzitosgourmetusa/.next/standalone
+pm2 save
+```
+
+### 4. Ver por qué falla la app (si sigue 502)
+
+```bash
+pm2 logs chuzitos --lines 50
+```
+
+Ahí verás errores de Node (falta de módulo, crash, etc.). Corrige el error y vuelve a `pm2 restart chuzitos`.
+
+---
+
 ## La web se ve sin estilos (CSS no carga) / ChunkLoadError / 404 a estáticos
 
 Si la página abre en blanco, sale “Application error” o en la consola del navegador (F12) ves **404** a archivos en `/next/static/` o `/_next/static/` y **ChunkLoadError**, es que los estáticos no se sirven bien. Dos causas habituales:
