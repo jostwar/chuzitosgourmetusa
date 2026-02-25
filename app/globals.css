@@ -437,7 +437,7 @@
   }
 }
 
-/* Hero: logo ModoChuzito.png — +30% tamaño en web; móvil 280px */
+/* Hero: logo ModoChuzito.png — +30% tamaño en web; móvil +30% (473px) */
 .hero-wrapper-five .hero-content .hero-logo-img {
   max-height: 676px !important;
   width: auto !important;
@@ -460,7 +460,7 @@
 }
 @media (max-width: 767px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 364px !important;
+    max-height: 473px !important; /* +30% sobre 364px en móvil */
   }
 }
 
