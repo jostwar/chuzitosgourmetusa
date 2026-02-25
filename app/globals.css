@@ -324,6 +324,12 @@
 .our-food-section {
   margin-top: -91px !important;
 }
+@media (max-width: 767px) {
+  .our-food-section {
+    margin-top: -220px !important;
+    padding-top: 20px !important;
+  }
+}
 
 /* Header transparente al hacer scroll - fondo Chuzitos */
 .header-area.transparent-header.sticky {
