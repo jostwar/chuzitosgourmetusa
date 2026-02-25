@@ -14,6 +14,29 @@ Guía paso a paso para subir esta web (Next.js) a Lightsail, conectar el dominio
 
 ---
 
+## Actualizar Lightsail (tras cambios en Git)
+
+Conéctate por SSH y ejecuta:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+git pull
+npm ci
+npm run build
+npm run prepare-standalone
+pm2 restart chuzitos
+```
+
+Si los estilos no se ven bien, fuerza de nuevo la copia de estáticos y reinicia:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+node scripts/copy-standalone.js
+pm2 restart chuzitos
+```
+
+---
+
 ## Parte 1: Configurar la instancia en Lightsail
 
 ### 1.1 Verificar puertos en el firewall
