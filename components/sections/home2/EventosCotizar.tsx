@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import ResponsivePicture from '@/components/elements/ResponsivePicture';
 
-const EVENTOS_RIGHT_IMAGE = 'https://chuzitos.s3.us-west-2.amazonaws.com/WhatsApp+Image+2026-02-24+at+11.26.00+AM.jpeg';
+const S3_MOVIL = 'https://chuzitos.s3.us-west-2.amazonaws.com/movil';
+const EVENTOS_DESKTOP_IMAGE = 'https://chuzitos.s3.us-west-2.amazonaws.com/WhatsApp+Image+2026-02-24+at+11.26.00+AM.jpeg';
 
 export default function EventosCotizarSection() {
   return (
@@ -32,13 +33,12 @@ export default function EventosCotizarSection() {
             <div className="col-lg-6">
               <div className="eventos-right-placeholder wow fadeInRight mb-50">
                 <div className="eventos-image-box">
-                  <Image
-                    src={EVENTOS_RIGHT_IMAGE}
+                  <ResponsivePicture
+                    mobileSrc={`${S3_MOVIL}/eventos1.png`}
+                    desktopSrc={EVENTOS_DESKTOP_IMAGE}
                     alt="Chuzitos Gourmet - Eventos"
-                    width={500}
-                    height={500}
+                    breakpoint={768}
                     className="eventos-box-img"
-                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                   />
                 </div>
               </div>
