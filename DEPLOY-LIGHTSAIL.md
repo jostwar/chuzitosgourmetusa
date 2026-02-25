@@ -150,6 +150,11 @@ server {
     listen 80;
     server_name chuzitosgourmetusa.com www.chuzitosgourmetusa.com;
 
+    # Estáticos de Next.js (CSS, JS): Nginx los sirve desde disco para que siempre carguen
+    location /_next/static/ {
+        alias /home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/;
+    }
+
     # Si la app pide /next/static/ (sin guion bajo), reescribir a /_next/static/
     location /next/ {
         rewrite ^/next/(.*)$ /_next/$1 last;
@@ -168,6 +173,8 @@ server {
     }
 }
 ```
+
+**Importante:** La ruta `/_next/static/` la sirve Nginx desde `/home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/`. Esa carpeta debe existir y tener archivos. En el servidor, desde la raíz del proyecto ejecuta una vez: `npm run prepare-standalone` (o `npm run build`, que ya copia estáticos con postbuild).
 
 Activar el sitio y comprobar:
 
