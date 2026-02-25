@@ -150,9 +150,15 @@ server {
     listen 80;
     server_name chuzitosgourmetusa.com www.chuzitosgourmetusa.com;
 
-    # Estáticos de Next.js (CSS, JS): Nginx los sirve desde disco + caché largo para PageSpeed
+    # Estáticos de Next.js (CSS, JS): Nginx los sirve desde disco + caché largo (PageSpeed: "efficient cache")
     location /_next/static/ {
         alias /home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    # Assets públicos (imágenes, fuentes, etc.): caché largo para reducir payload y mejorar puntuación
+    location /assets/ {
+        alias /home/ubuntu/chuzitosgourmetusa/.next/standalone/public/assets/;
         add_header Cache-Control "public, max-age=31536000, immutable";
     }
 
@@ -337,3 +343,26 @@ pm2 save
 ```
 
 Luego recarga la URL (mejor con Ctrl+F5 para evitar caché).
+
+---
+
+## Recomendaciones PageSpeed / Lighthouse (qué aplicar en el servidor)
+
+Tras un análisis (Desktop/Mobile), el informe suele marcar:
+
+| Recomendación | Ahorro estimado | Qué hacer |
+|---------------|-----------------|-----------|
+| **Use efficient cache lifetimes** | ~5 MB | En Nginx, que los bloques `location /_next/static/` y `location /assets/` tengan `add_header Cache-Control "public, max-age=31536000, immutable";` (ver config de la Parte 6). Recargar Nginx. |
+| **Improve image delivery** | ~2,8 MB | En el código ya se usa Next/Image, priority en hero, AVIF/WebP en `next.config`. Tras desplegar, las imágenes se sirven optimizadas. |
+| **Font display** | ~360 ms | En el código las fuentes usan `display: 'optional'`. Tras `git pull` y nuevo build, aplica solo. |
+| **Render blocking requests** | ~790 ms | Depende del CSS/JS crítico; el proyecto ya carga fuentes con next/font. Opcional: valorar cargar CSS no crítico de forma diferida (avanzado). |
+| **Reduce unused CSS** | ~65 KiB | Los CSS globales (style.css, default.css) son del tema; reducir requiere purga o división por ruta (avanzado). |
+| **Image elements: width and height** | CLS | En home y layout se usa `next/image` con width/height. Cualquier `<img>` que añadas debe llevar `width` y `height` para evitar layout shift. |
+
+**En el servidor, para que apliquen caché y fuentes:**
+
+1. Nginx con la config de la Parte 6 (incluye `/_next/static/` y `/assets/` con `Cache-Control`).
+2. `sudo nginx -t && sudo systemctl reload nginx`.
+3. Desplegar la última versión: `git pull`, `npm ci`, `npm run build`, `node scripts/copy-standalone.js`, `pm2 restart chuzitos`.
+
+Luego vuelve a lanzar el análisis; “efficient cache” y “Font display” deberían mejorar.
