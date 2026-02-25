@@ -334,6 +334,28 @@
   color: inherit;
 }
 
+/* Menú: en móvil todo el contenido de la tarjeta centrado */
+@media (max-width: 767px) {
+  .biryani-menu-section .menu-item.style-ten {
+    align-items: center !important;
+  }
+  .biryani-menu-section .menu-item.style-ten .menu-thumbnail {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .biryani-menu-section .menu-item.style-ten .menu-info {
+    text-align: center;
+    width: 100%;
+  }
+  .biryani-menu-section .menu-item.style-ten .menu-info .title,
+  .biryani-menu-section .menu-item.style-ten .menu-info p {
+    text-align: center;
+  }
+  .biryani-menu-section .menu-item.style-ten .menu-info .menu-info-actions {
+    justify-content: center;
+  }
+}
+
 /* Títulos de sección tipo botón (sub-title): #442683 */
 .section-title .sub-title {
   background-color: #442683 !important;
