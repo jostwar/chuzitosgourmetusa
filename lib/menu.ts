@@ -212,7 +212,7 @@ export const menuItems: MenuItem[] = [
     description: "Patacón gratinado con chorizo y butifarra.",
     price: "18.75",
     category: "PATACÓN",
-    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Patac%C3%B3n%20Chori%20Buti.jpg",
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Patacon+Chori+Buti.jpg",
   },
   // MAZORCAS
   {
