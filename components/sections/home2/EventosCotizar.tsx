@@ -22,7 +22,6 @@ export default function EventosCotizarSection() {
                   </h2>
                 </div>
                 <div className="happy-button">
-                  <p>Cotización de eventos</p>
                   <Link href="#" className="theme-btn style-one">
                     Cotizar
                   </Link>
