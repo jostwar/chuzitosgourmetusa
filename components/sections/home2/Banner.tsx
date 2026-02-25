@@ -6,7 +6,7 @@ const HeroSection = () => {
       <div className="hero-wrapper-five p-r">
         {/* Background Image */}
         <div className="hero-bg-img text-center">
-          <img src="https://chuzitos.s3.us-west-2.amazonaws.com/heroimg.png" alt="Food Background" />
+          <img src="https://chuzitos.s3.us-west-2.amazonaws.com/heroback3.png" alt="Food Background" />
         </div>
 
         {/* Main Content */}
