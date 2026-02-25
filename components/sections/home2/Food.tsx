@@ -57,9 +57,9 @@ export default function FoodSection() {
                 <h4>
                   <Link href="tel:+17866582780">+1 (786) 658-2780</Link>
                 </h4>
-                <Link href="/contact" className="theme-btn style-one">
+                <a href="https://wa.me/17866582780" target="_blank" rel="noopener noreferrer" className="theme-btn style-one">
                   Ordenar ahora
-                </Link>
+                </a>
               </div>
             </div>
           </div>
