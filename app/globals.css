@@ -378,28 +378,30 @@
   }
 }
 
-/* Hero: logo Chuzitos ~30% más grande */
+/* Hero: logo ModoChuzito.png más grande (imagen principal del hero) */
 .hero-wrapper-five .hero-content .hero-logo-img {
-  max-height: 364px !important;
+  max-height: 420px !important;
+  width: auto !important;
+  height: auto !important;
 }
 @media (min-width: 1400px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 364px !important;
+    max-height: 460px !important;
   }
 }
 @media (max-width: 1199px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 234px !important;
+    max-height: 320px !important;
   }
 }
 @media (max-width: 991px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 182px !important;
+    max-height: 280px !important;
   }
 }
 @media (max-width: 767px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 200px !important;
+    max-height: 280px !important;
   }
 }
 
