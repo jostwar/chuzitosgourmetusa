@@ -174,7 +174,14 @@ server {
 }
 ```
 
-**Importante:** La ruta `/_next/static/` la sirve Nginx desde `/home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/`. Esa carpeta debe existir y tener archivos. En el servidor, desde la raíz del proyecto ejecuta una vez: `npm run prepare-standalone` (o `npm run build`, que ya copia estáticos con postbuild).
+**Importante:** La ruta `/_next/static/` la sirve Nginx desde `/home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/`. Esa carpeta debe existir y tener archivos. Si tras `npm run prepare-standalone` esa ruta no existe, créala a mano en el servidor:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+mkdir -p .next/standalone/.next
+cp -r .next/static .next/standalone/.next/
+ls -la .next/standalone/.next/static/
+```
 
 Activar el sitio y comprobar:
 

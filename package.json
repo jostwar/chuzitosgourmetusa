@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npx next build",
-    "postbuild": "node -e \"const fs=require('fs');const path=require('path');const s='.next/standalone';if(fs.existsSync(s)){const c=(a,b)=>fs.existsSync(a)&&fs.mkdirSync(path.dirname(b),{recursive:true})&&fs.cpSync(a,b,{recursive:true}); c('public',s+'/public'); c('.next/static',s+'/.next/static'); console.log('Standalone: public y .next/static copiados');} else console.log('Standalone no existe.');\"",
+    "postbuild": "node scripts/copy-standalone.js",
     "start": "npx next start",
-    "prepare-standalone": "node -e \"const fs=require('fs');const path=require('path');const s='.next/standalone';if(fs.existsSync(s)){const c=(a,b)=>fs.existsSync(a)&&fs.mkdirSync(path.dirname(b),{recursive:true})&&fs.cpSync(a,b,{recursive:true}); c('public',s+'/public'); c('.next/static',s+'/.next/static'); console.log('Standalone listo');} else console.log('Ejecuta npm run build antes.');\"",
+    "prepare-standalone": "node scripts/copy-standalone.js",
     "start:standalone": "node scripts/start-standalone.js"
   },
   "dependencies": {
