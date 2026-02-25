@@ -391,7 +391,7 @@ export const menuItems: MenuItem[] = [
     description: "Bollo limpio, queso, papa ripio, lechuga, chorizo y butifarra, salsa de la casa.",
     price: "17.00",
     category: "CHUZO DESGRANADO",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Chuzo+Desgranado+ChoriButi.jpg",
   },
   // ASADOS
   {
