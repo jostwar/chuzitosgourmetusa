@@ -1,12 +1,27 @@
 import React from 'react';
+import Image from 'next/image';
+
+const HERO_BG =
+  'https://chuzitos.s3.us-west-2.amazonaws.com/heroback3.png';
+const HERO_LOGO =
+  'https://chuzitos.s3.us-west-2.amazonaws.com/ModoChuzito.png';
 
 const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="hero-wrapper-five p-r">
-        {/* Background Image */}
+        {/* Background Image - LCP: optimizada y prioritaria */}
         <div className="hero-bg-img text-center">
-          <img src="https://chuzitos.s3.us-west-2.amazonaws.com/heroback3.png" alt="Food Background" />
+          <Image
+            src={HERO_BG}
+            alt="Food Background"
+            width={1920}
+            height={1080}
+            sizes="100vw"
+            priority
+            fetchPriority="high"
+            className="w-full h-auto object-cover"
+          />
         </div>
 
         {/* Main Content */}
@@ -15,9 +30,14 @@ const HeroSection = () => {
             <div className="col-lg-12">
               <div className="hero-content text-center">
                 <div className="hero-logo-wrap wow fadeInDown" data-wow-delay=".6s">
-                  <img
-                    src="https://chuzitos.s3.us-west-2.amazonaws.com/ModoChuzito.png"
+                  <Image
+                    src={HERO_LOGO}
                     alt="Chuzitos Gourmet USA - #AyPapááá"
+                    width={380}
+                    height={364}
+                    sizes="(max-width: 768px) 200px, 364px"
+                    priority
+                    fetchPriority="high"
                     className="hero-logo-img"
                   />
                 </div>

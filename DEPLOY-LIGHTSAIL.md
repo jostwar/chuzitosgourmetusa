@@ -150,9 +150,10 @@ server {
     listen 80;
     server_name chuzitosgourmetusa.com www.chuzitosgourmetusa.com;
 
-    # Estáticos de Next.js (CSS, JS): Nginx los sirve desde disco para que siempre carguen
+    # Estáticos de Next.js (CSS, JS): Nginx los sirve desde disco + caché largo para PageSpeed
     location /_next/static/ {
         alias /home/ubuntu/chuzitosgourmetusa/.next/standalone/.next/static/;
+        add_header Cache-Control "public, max-age=31536000, immutable";
     }
 
     # Si la app pide /next/static/ (sin guion bajo), reescribir a /_next/static/

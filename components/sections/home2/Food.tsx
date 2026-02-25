@@ -27,6 +27,8 @@ export default function FoodSection() {
                   alt="Maíz con salsa Chuzitos Gourmet"
                   width={410}
                   height={455}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 410px"
                 />
               </div>
             </div>

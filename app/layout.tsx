@@ -21,9 +21,14 @@ export const metadata = {
   ],
 };
 
+const HERO_BG_PRELOAD = "https://chuzitos.s3.us-west-2.amazonaws.com/heroback3.png";
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${barlowCondensed.variable} ${hankenGrotesk.variable}`}>
+      <head>
+        <link rel="preload" as="image" href={HERO_BG_PRELOAD} />
+      </head>
       <body>
         <CartProvider>
           {children}
