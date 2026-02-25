@@ -11,6 +11,7 @@
 
 @font-face {
     font-family: "flaticon_foodix";
+    font-display: swap;
     src: url("./flaticon_foodix.woff2?b5ca6ade3dd2305f9e48bb133e2dd2f5") format("woff2"),
 url("./flaticon_foodix.woff?b5ca6ade3dd2305f9e48bb133e2dd2f5") format("woff"),
 url("./flaticon_foodix.eot?b5ca6ade3dd2305f9e48bb133e2dd2f5#iefix") format("embedded-opentype"),

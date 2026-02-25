@@ -429,8 +429,8 @@ Tras un análisis (Desktop/Mobile), el informe suele marcar:
 |---------------|-----------------|-----------|
 | **Use efficient cache lifetimes** | ~5 MB | En Nginx, que los bloques `location /_next/static/` y `location /assets/` tengan `add_header Cache-Control "public, max-age=31536000, immutable";` (ver config de la Parte 6). Recargar Nginx. |
 | **Improve image delivery** | ~2,8 MB | En el código ya se usa Next/Image, priority en hero, AVIF/WebP en `next.config`. Tras desplegar, las imágenes se sirven optimizadas. |
-| **Font display** | ~360 ms | En el código las fuentes usan `display: 'optional'`. Tras `git pull` y nuevo build, aplica solo. |
-| **Render blocking requests** | ~790 ms | Depende del CSS/JS crítico; el proyecto ya carga fuentes con next/font. Opcional: valorar cargar CSS no crítico de forma diferida (avanzado). |
+| **Font display** | ~310 ms | Flaticon y Font Awesome tienen `font-display: swap`; next/font usa `optional`. Ya aplicado en el repo. |
+| **Render blocking requests** | ~2 s | El tema carga varios CSS (style.css, default.css, Swiper). Mejora posible: extraer CSS crítico o cargar parte en diferido (avanzado). |
 | **Reduce unused CSS** | ~65 KiB | Los CSS globales (style.css, default.css) son del tema; reducir requiere purga o división por ruta (avanzado). |
 | **Image elements: width and height** | CLS | En home y layout se usa `next/image` con width/height. Cualquier `<img>` que añadas debe llevar `width` y `height` para evitar layout shift. |
 
@@ -441,3 +441,21 @@ Tras un análisis (Desktop/Mobile), el informe suele marcar:
 3. Desplegar la última versión: `git pull`, `npm ci`, `npm run build`, `node scripts/copy-standalone.js`, `pm2 restart chuzitos`.
 
 Luego vuelve a lanzar el análisis; “efficient cache” y “Font display” deberían mejorar.
+
+### Caché e imágenes servidas desde S3 (Lighthouse: "Use efficient cache", "Improve image delivery")
+
+Las imágenes que se piden **directamente a S3** (heroback3.png, footer.png, movil/antojos1–3.png, etc.) no pasan por Nginx ni por la app; el navegador las descarga de AWS. Para mejorar puntuación móvil:
+
+1. **Cache en S3**  
+   En el bucket (p. ej. `chuzitos`), configura **Cache-Control** en los objetos o en la política del bucket, por ejemplo:  
+   `Cache-Control: public, max-age=31536000`  
+   (En la consola AWS: S3 → objeto → Editar → Metadatos → Añadir `Cache-Control`.)
+
+2. **CloudFront (opcional)**  
+   Pon delante del bucket una distribución CloudFront y sirve las imágenes por esa URL. Así puedes fijar TTL largo y reducir latencia.
+
+3. **footer.png y heroback3.png**  
+   Si Lighthouse marca "Improve image delivery" (ahorro ~700 KiB), conviene:
+   - Subir versiones en **WebP** (o AVIF) y usarlas donde sea posible.
+   - Reducir peso (comprimir sin perder calidad).  
+   El hero ya usa `next/image` (optimización en la app); footer.png se usa como fondo en CSS desde S3, por eso no se optimiza por Next.js. Una opción es tener `footer.webp` en S3 y referenciarla en `globals.css`, o comprimir el PNG actual.
