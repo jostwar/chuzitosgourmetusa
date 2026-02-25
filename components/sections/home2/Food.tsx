@@ -28,7 +28,7 @@ export default function FoodSection() {
                   width={410}
                   height={455}
                   priority
-                  sizes="(max-width: 768px) 100vw, 410px"
+                  sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
               </div>
             </div>
@@ -43,6 +43,7 @@ export default function FoodSection() {
                   alt="Menú infantil Chuzitos Gourmet"
                   width={410}
                   height={343}
+                  sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
               </div>
             </div>
@@ -72,6 +73,7 @@ export default function FoodSection() {
                   alt="Pollo y papas Chuzitos Gourmet"
                   width={410}
                   height={695}
+                  sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
               </div>
             </div>

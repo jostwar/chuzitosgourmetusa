@@ -367,6 +367,16 @@
   display: block;
   vertical-align: middle;
 }
+@media (max-width: 767px) {
+  .eventos-image-box {
+    max-width: 100% !important;
+    margin-right: auto;
+  }
+  .eventos-image-box .eventos-box-img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 
 /* Hero: logo Chuzitos ~30% más grande */
 .hero-wrapper-five .hero-content .hero-logo-img {
@@ -418,6 +428,58 @@
 @media (max-width: 767px) {
   .hero-wrapper-five .hero-content .hero-logo-wrap {
     margin-top: -55px !important;
+  }
+}
+
+/* Móvil: imágenes adaptadas al ancho de pantalla (hero + sección food) */
+.hero-wrapper-five .hero-bg-img,
+.hero-wrapper-five .hero-bg-img img {
+  max-width: 100% !important;
+}
+.hero-wrapper-five .hero-bg-img img {
+  height: auto !important;
+  object-fit: cover !important;
+}
+@media (max-width: 991px) {
+  .hero-wrapper-five .hero-bg-img img {
+    min-height: 320px !important;
+    max-height: 60vh !important;
+  }
+}
+@media (max-width: 767px) {
+  .hero-wrapper-five .hero-bg-img img {
+    min-height: 240px !important;
+    max-height: 50vh !important;
+  }
+}
+
+.our-food-section .food-item .food-thumbnail,
+.our-food-section .food-item .food-thumbnail img,
+.our-food-section .food-item .food-thumbnail picture img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.our-food-section .food-item .food-thumbnail img,
+.our-food-section .food-item .food-thumbnail picture img {
+  width: 100% !important;
+  object-fit: contain !important;
+}
+@media (max-width: 767px) {
+  .our-food-section .food-item .food-thumbnail {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Móvil: imágenes del menú (Biryani, slider) adaptadas */
+@media (max-width: 767px) {
+  .kebab-menu-section .menu-thumbnail img,
+  .biryani-menu-section .menu-thumbnail img,
+  .kebab-menu-section .menu-thumbnail picture img,
+  .biryani-menu-section .menu-thumbnail picture img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
   }
 }
 
