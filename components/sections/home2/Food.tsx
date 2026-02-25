@@ -1,5 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import ResponsivePicture from '@/components/elements/ResponsivePicture';
+
+const S3_MOVIL = 'https://chuzitos.s3.us-west-2.amazonaws.com/movil';
 
 export default function FoodSection() {
   return (
@@ -18,15 +20,15 @@ export default function FoodSection() {
         </div>
 
         <div className="row align-items-start">
-          {/* Left Column - imagen 410x455 */}
+          {/* Left Column - móvil: antojos1.png; escritorio: food1.png */}
           <div className="col-xl-4 col-md-6">
             <div className="food-item mb-50">
               <div className="food-thumbnail wow fadeInUp">
-                <Image
-                  src="/assets/images/home-beef/about/food1.png"
+                <ResponsivePicture
+                  mobileSrc={`${S3_MOVIL}/antojos1.png`}
+                  desktopSrc="/assets/images/home-beef/about/food1.png"
                   alt="Maíz con salsa Chuzitos Gourmet"
-                  width={410}
-                  height={455}
+                  breakpoint={768}
                   priority
                   sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
@@ -34,15 +36,15 @@ export default function FoodSection() {
             </div>
           </div>
 
-          {/* Center Column - imagen 410x343 + caja de pedido */}
+          {/* Center Column - móvil: antojos2.png; escritorio: food2.png */}
           <div className="col-xl-4 col-md-6">
             <div className="food-item mb-50 wow fadeInDown">
               <div className="food-thumbnail">
-                <Image
-                  src="/assets/images/home-beef/about/food2.png"
+                <ResponsivePicture
+                  mobileSrc={`${S3_MOVIL}/antojos2.png`}
+                  desktopSrc="/assets/images/home-beef/about/food2.png"
                   alt="Menú infantil Chuzitos Gourmet"
-                  width={410}
-                  height={343}
+                  breakpoint={768}
                   sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
               </div>
@@ -64,15 +66,15 @@ export default function FoodSection() {
             </div>
           </div>
 
-          {/* Right Column - imagen 410x695 */}
+          {/* Right Column - móvil: antojos3.png; escritorio: food3.png */}
           <div className="col-xl-4 col-md-12">
             <div className="food-item mb-50 wow fadeInRight">
               <div className="food-thumbnail">
-                <Image
-                  src="/assets/images/home-beef/about/food3.png"
+                <ResponsivePicture
+                  mobileSrc={`${S3_MOVIL}/antojos3.png`}
+                  desktopSrc="/assets/images/home-beef/about/food3.png"
                   alt="Pollo y papas Chuzitos Gourmet"
-                  width={410}
-                  height={695}
+                  breakpoint={768}
                   sizes="(max-width: 576px) 100vw, (max-width: 991px) 50vw, 410px"
                 />
               </div>
