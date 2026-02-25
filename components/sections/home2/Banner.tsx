@@ -33,9 +33,9 @@ const HeroSection = () => {
                   <Image
                     src={HERO_LOGO}
                     alt="Chuzitos Gourmet USA - #AyPapááá"
-                    width={640}
-                    height={613}
-                    sizes="(max-width: 480px) 320px, (max-width: 768px) 400px, 640px"
+                    width={380}
+                    height={364}
+                    sizes="(max-width: 480px) 280px, (max-width: 768px) 300px, 364px"
                     priority
                     fetchPriority="high"
                     className="hero-logo-img"

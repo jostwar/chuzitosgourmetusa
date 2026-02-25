@@ -378,25 +378,25 @@
   }
 }
 
-/* Hero: logo ModoChuzito.png más grande en web (móvil ya bien) */
+/* Hero: logo ModoChuzito.png — tamaño original en web; solo más grande en móvil */
 .hero-wrapper-five .hero-content .hero-logo-img {
-  max-height: 520px !important;
+  max-height: 364px !important;
   width: auto !important;
   height: auto !important;
 }
 @media (min-width: 1400px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 580px !important;
+    max-height: 364px !important;
   }
 }
 @media (max-width: 1199px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 400px !important;
+    max-height: 234px !important;
   }
 }
 @media (max-width: 991px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 320px !important;
+    max-height: 182px !important;
   }
 }
 @media (max-width: 767px) {
