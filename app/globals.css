@@ -320,6 +320,11 @@
   border-color: #442683 !important;
 }
 
+/* Primera sección Our Food: subir un poco */
+.our-food-section {
+  margin-top: -40px !important;
+}
+
 /* Header transparente al hacer scroll - fondo Chuzitos */
 .header-area.transparent-header.sticky {
   background-color: #442683 !important;
