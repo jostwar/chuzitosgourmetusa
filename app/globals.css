@@ -399,7 +399,7 @@
 }
 @media (max-width: 767px) {
   .hero-wrapper-five .hero-content .hero-logo-img {
-    max-height: 130px !important;
+    max-height: 200px !important;
   }
 }
 
@@ -431,28 +431,54 @@
   }
 }
 
-/* Móvil: imágenes adaptadas al ancho de pantalla (hero + sección food) */
+/* Hero: imagen principal más grande y visible; en móvil que ocupe bien la pantalla */
 .hero-wrapper-five .hero-bg-img,
 .hero-wrapper-five .hero-bg-img img {
   max-width: 100% !important;
 }
+.hero-wrapper-five .hero-bg-img {
+  min-height: 400px;
+}
 .hero-wrapper-five .hero-bg-img img {
+  width: 100% !important;
   height: auto !important;
+  min-height: 400px !important;
   object-fit: cover !important;
+  object-position: center top !important;
 }
 @media (max-width: 991px) {
+  .hero-wrapper-five .hero-bg-img,
   .hero-wrapper-five .hero-bg-img img {
-    min-height: 320px !important;
-    max-height: 60vh !important;
+    min-height: 65vh !important;
+    max-height: none !important;
   }
 }
 @media (max-width: 767px) {
+  .hero-wrapper-five .hero-section,
+  .hero-wrapper-five {
+    min-height: 70vh !important;
+    position: relative !important;
+  }
+  .hero-wrapper-five .hero-bg-img {
+    min-height: 70vh !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    z-index: -1 !important;
+  }
   .hero-wrapper-five .hero-bg-img img {
-    min-height: 240px !important;
-    max-height: 50vh !important;
+    min-height: 70vh !important;
+    height: 70vh !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 }
 
+/* Our Food: en móvil imágenes más contenidas (no extremas) */
 .our-food-section .food-item .food-thumbnail,
 .our-food-section .food-item .food-thumbnail img,
 .our-food-section .food-item .food-thumbnail picture img {
@@ -468,6 +494,14 @@
   .our-food-section .food-item .food-thumbnail {
     padding-left: 0;
     padding-right: 0;
+    max-height: 240px !important;
+    overflow: hidden;
+  }
+  .our-food-section .food-item .food-thumbnail img,
+  .our-food-section .food-item .food-thumbnail picture img {
+    max-height: 240px !important;
+    width: 100% !important;
+    object-fit: cover !important;
   }
 }
 
