@@ -135,9 +135,10 @@ Cuando devuelvan `44.253.129.39` (o el CNAME correspondiente), sigue.
 
 ## Parte 6: Nginx como proxy (puerto 80 y 443)
 
-En el servidor (SSH):
+En el servidor (SSH). **Primero instala Nginx** (si no lo has hecho); sin esto, `nginx` y `nginx.service` no existirán:
 
 ```bash
+sudo apt update
 sudo apt install -y nginx
 sudo nano /etc/nginx/sites-available/chuzitosgourmetusa
 ```
