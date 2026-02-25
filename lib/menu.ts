@@ -83,7 +83,7 @@ export const menuItems: MenuItem[] = [
     description: "Pan, salchicha, pechuga, lomito, chorizo, butifarra, queso costeño, queso mozzarella, lechuga, papa ripio, salsa de la casa.",
     price: "23.00",
     category: "PERROS CALIENTES",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Perro%20Chuzo%20Combinado.jpg",
   },
   {
     title: "Perro Ítalo Hawaiano",
@@ -162,14 +162,14 @@ export const menuItems: MenuItem[] = [
     description: "Papas a la francesa, salchicha suiza, queso, lechuga, papa ripio, salsa de la casa.",
     price: "15.05",
     category: "SALCHIPAPAS",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Salchipapa%20Suiza.jpg",
   },
   {
     title: "Salchipapa Carnes",
     description: "Papas a la francesa, salchicha, carne, queso, lechuga, papa ripio, salsa de la casa.",
     price: "23.00",
     category: "SALCHIPAPAS",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Salchipapa%20Carnes.jpg",
   },
   // PATACÓN GRATINADO
   {
@@ -212,7 +212,7 @@ export const menuItems: MenuItem[] = [
     description: "Patacón gratinado con chorizo y butifarra.",
     price: "18.75",
     category: "PATACÓN",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Patac%C3%B3n%20Chori%20Buti.jpg",
   },
   // MAZORCAS
   {
@@ -241,7 +241,7 @@ export const menuItems: MenuItem[] = [
     description: "Maíz, carne, queso, papa ripio, salsa de la casa.",
     price: "22.00",
     category: "MAZORCAS",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Mazorca%20de%20Carne.jpg",
   },
   // ENTRADAS
   {
@@ -270,14 +270,14 @@ export const menuItems: MenuItem[] = [
     description: "Pataconcitos with cheese.",
     price: "10.39",
     category: "ENTRADAS",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Pataconcitos%20con%20Queso.jpg",
   },
   {
     title: "Papas a la Francesa Gratinada con Tocineta",
     description: "Papas a la francesa gratinadas con tocineta.",
     price: "11.00",
     category: "ENTRADAS",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Papas%20a%20la%20Francesa%20Gratinada%20con%20Tocineta.jpg",
   },
   // CHUZO AREPA
   {
@@ -334,7 +334,7 @@ export const menuItems: MenuItem[] = [
     description: "Arepa rellena con queso, papa ripio, salsa de la casa y proteína.",
     price: "30.00",
     category: "CHUZO AREPA",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Chuzo%20Arepa%20Especial.jpg",
   },
   // CHUZO DESGRANADO
   {
@@ -414,14 +414,14 @@ export const menuItems: MenuItem[] = [
     description: "Menú infantil con salchipapa y jugo de cajita.",
     price: "10.39",
     category: "MENÚ INFANTIL",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Salchipapa%20Jr%20%2B%20Jugo%20de%20Cajita.jpg",
   },
   {
     title: "Nuggets de Pollo + Jugo de Cajita",
     description: "Menú infantil con nuggets y jugo de cajita.",
     price: "10.39",
     category: "MENÚ INFANTIL",
-    img: PLACEHOLDER_IMG,
+    img: "https://chuzitos.s3.us-west-2.amazonaws.com/menu/Nuggets%20de%20Pollo%20%2B%20Jugo%20de%20Cajita.jpg",
   },
   // BEBIDAS – imágenes Chuzitos S3
   {
