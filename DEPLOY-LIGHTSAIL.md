@@ -223,16 +223,17 @@ En el navegador: **https://chuzitosgourmetusa.com** y **https://www.chuzitosgour
 
 ## Actualizar la web después de cambios en Git
 
-En el servidor (SSH):
+En el servidor (SSH). Tras `npm run build` se ejecuta **postbuild** y se copian `public` y `.next/static` al standalone; luego reinicia PM2:
 
 ```bash
 cd /home/ubuntu/chuzitosgourmetusa
 git pull
 npm ci
 npm run build
-npm run prepare-standalone
 pm2 restart chuzitos
 ```
+
+(Si por algún motivo los estilos no se actualizan, ejecuta además `npm run prepare-standalone` y vuelve a `pm2 restart chuzitos`.)
 
 ---
 
@@ -246,3 +247,57 @@ pm2 restart chuzitos
 6. Certbot: `sudo certbot --nginx -d chuzitosgourmetusa.com -d www.chuzitosgourmetusa.com` y redirigir HTTP a HTTPS.
 
 Si algo falla, revisa: `pm2 logs chuzitos`, `sudo tail -f /var/log/nginx/error.log` y que el dominio en GoDaddy apunte a **44.253.129.39**.
+
+---
+
+## La web se ve sin estilos (CSS no carga)
+
+Si la página abre pero se ve “en blanco”, sin colores ni maquetación (solo texto y enlaces por defecto), es que los archivos estáticos (CSS/JS) no se están sirviendo. Haz esto **en el servidor por SSH**:
+
+### 1. Asegurar que standalone tiene los estáticos
+
+Después de cada `npm run build`, Next.js no copia solo `public` y `.next/static` al directorio standalone; hay que copiarlos (o usar `postbuild`, que ya lo hace en este proyecto). Ejecuta:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+npm run prepare-standalone
+```
+
+Comprueba que existan carpetas y archivos:
+
+```bash
+ls -la .next/standalone/.next/static/
+ls -la .next/standalone/public/
+```
+
+Tienen que verse archivos (chunks, CSS, etc.). Si están vacíos o no existen, el build o la copia fallaron.
+
+### 2. Reiniciar PM2 con el directorio correcto
+
+La app debe ejecutarse **desde** el directorio standalone para que encuentre `.next/static` y `public`:
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+pm2 delete chuzitos
+pm2 start server.js --name chuzitos -i 1 --cwd /home/ubuntu/chuzitosgourmetusa/.next/standalone
+pm2 save
+```
+
+### 3. Verificar en el navegador
+
+Abre la web y en “Inspeccionar” → pestaña **Red**: revisa si alguna petición a `/_next/static/...` devuelve **404**. Si es así, en el servidor vuelve a ejecutar los pasos 1 y 2.
+
+### Resumen rápido (cuando la web se ve mal)
+
+```bash
+cd /home/ubuntu/chuzitosgourmetusa
+git pull
+npm ci
+npm run build
+npm run prepare-standalone
+pm2 delete chuzitos
+pm2 start server.js --name chuzitos -i 1 --cwd /home/ubuntu/chuzitosgourmetusa/.next/standalone
+pm2 save
+```
+
+Luego recarga la URL (mejor con Ctrl+F5 para evitar caché).
