@@ -403,16 +403,16 @@
 
 /* Hero: subir un poco el logo (quedaba muy abajo) */
 .hero-wrapper-five .hero-content .hero-logo-wrap {
-  margin-top: -80px !important;
+  margin-top: -110px !important;
 }
 @media (max-width: 991px) {
   .hero-wrapper-five .hero-content .hero-logo-wrap {
-    margin-top: -55px !important;
+    margin-top: -75px !important;
   }
 }
 @media (max-width: 767px) {
   .hero-wrapper-five .hero-content .hero-logo-wrap {
-    margin-top: -40px !important;
+    margin-top: -55px !important;
   }
 }
 
