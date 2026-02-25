@@ -148,6 +148,12 @@ Pega esta configuración (solo HTTP por ahora; SSL se añade en la Parte 7):
 server {
     listen 80;
     server_name chuzitosgourmetusa.com www.chuzitosgourmetusa.com;
+
+    # Si la app pide /next/static/ (sin guion bajo), reescribir a /_next/static/
+    location /next/ {
+        rewrite ^/next/(.*)$ /_next/$1 last;
+    }
+
     location / {
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
@@ -250,9 +256,23 @@ Si algo falla, revisa: `pm2 logs chuzitos`, `sudo tail -f /var/log/nginx/error.l
 
 ---
 
-## La web se ve sin estilos (CSS no carga)
+## La web se ve sin estilos (CSS no carga) / ChunkLoadError / 404 a estáticos
 
-Si la página abre pero se ve “en blanco”, sin colores ni maquetación (solo texto y enlaces por defecto), es que los archivos estáticos (CSS/JS) no se están sirviendo. Haz esto **en el servidor por SSH**:
+Si la página abre en blanco, sale “Application error” o en la consola del navegador (F12) ves **404** a archivos en `/next/static/` o `/_next/static/` y **ChunkLoadError**, es que los estáticos no se sirven bien. Dos causas habituales:
+
+1. **Las peticiones van a `/next/static/` (sin guion bajo)**  
+   Next.js sirve en `/_next/static/`. Si tu Nginx aún no tiene el rewrite, añade dentro de `server { ... }` (tanto en el bloque que escucha 80 como en el de 443):
+
+   ```nginx
+   location /next/ {
+       rewrite ^/next/(.*)$ /_next/$1 last;
+   }
+   ```
+
+   Luego: `sudo nginx -t && sudo systemctl reload nginx`.
+
+2. **Los archivos no están en el standalone o PM2 arrancó con otro directorio**  
+   Sigue los pasos siguientes.
 
 ### 1. Asegurar que standalone tiene los estáticos
 
