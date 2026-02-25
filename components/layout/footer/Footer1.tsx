@@ -110,7 +110,7 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
       <div className="copyright-area text-center">
         <div className="container">
           <div className="copyright-text">
-            <p>&copy; {year || '2025'} Chuzitos Gourmet. All rights reserved.</p>
+            <p>&copy; {year || '2026'} Chuzitos Gourmet USA. All rights reserved. Powered by iPeakAgency.</p>
           </div>
         </div>
       </div>
