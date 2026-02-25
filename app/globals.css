@@ -12,6 +12,37 @@
   background-color: rgba(231, 79, 150, 0.2) !important;
 }
 
+/* Features (Security Payment, DoorDash, etc.): iconos bien visibles en móvil */
+@media (max-width: 767px) {
+  .features-section .iconic-info-box.style-three {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    text-align: left;
+  }
+  .features-section .iconic-info-box.style-three .icon {
+    flex: 0 0 auto !important;
+    width: 56px !important;
+    min-width: 56px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 16px !important;
+    font-size: 26px !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .features-section .iconic-info-box.style-three .icon i {
+    display: block;
+    line-height: 1;
+    text-align: center;
+  }
+}
+
 /* Menú: quitar borde/sombra oscura a la izquierda de las imágenes (style-ten) */
 .biryani-menu-section .menu-item.style-ten .menu-thumbnail {
   box-shadow: none !important;
