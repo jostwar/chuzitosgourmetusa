@@ -31,6 +31,7 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
                         alt="Chuzitos Gourmet USA"
                         width={200}
                         height={150}
+                        sizes="200px"
                         style={{ height: "auto" }}
                         className="chuzitos-logo"
                       />
@@ -54,7 +55,7 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="footer-widget footer-contact-widget mb-40 wow fadeInUp">
                 <div className="widget-content">
-                  <h4 className="widget-title">Contact Us</h4>
+                  <h4 className="widget-title">Contáctanos</h4>
                   <ul className="address-list">
                     <li>Sede Kendall 6605 SW 127th Ave, Miami, FL 33183, USA</li>
                     <li>
@@ -72,13 +73,13 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="footer-widget footer-nav-widget mb-40 wow fadeInUp">
                 <div className="widget-content">
-                  <h4 className="widget-title">Quick Links</h4>
+                  <h4 className="widget-title">Enlaces</h4>
                   <ul className="widget-menu">
                     <li>
                       <Link href="/#menu">Menú</Link>
                     </li>
                     <li>
-                      <Link href="/about">About Us</Link>
+                      <Link href="/about">Nosotros</Link>
                     </li>
                     <li>
                       <Link href="/#eventos">Eventos</Link>
@@ -92,7 +93,7 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="footer-widget footer-opening-widget mb-40 wow fadeInUp">
                 <div className="widget-content">
-                  <h4 className="widget-title">Opening Time</h4>
+                  <h4 className="widget-title">Horarios</h4>
                   <ul className="opening-schedule opening-schedule-by-day">
                     <li className="opening-location">Kendall</li>
                     <li><span className="opening-days">Martes a jueves</span><span className="opening-hours">6:30pm - 11pm</span></li>

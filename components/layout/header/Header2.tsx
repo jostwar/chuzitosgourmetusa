@@ -64,6 +64,7 @@ export default function Header({
                       alt="Chuzitos Gourmet USA"
                       width={200}
                       height={150}
+                      sizes="200px"
                       className="chuzitos-logo"
                     />
                   </Link>
@@ -81,6 +82,7 @@ export default function Header({
                           alt="Chuzitos Gourmet USA"
                           width={200}
                           height={150}
+                          sizes="200px"
                           className="chuzitos-logo"
                         />
                       </Link>

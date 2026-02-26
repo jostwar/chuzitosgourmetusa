@@ -18,8 +18,8 @@ export default function Menu() {
   };
 
   const menuItems: MenuItem[] = [
-    { title: 'Home', href: '/' },
-    { title: 'Menu', href: '/#menu' },
+    { title: 'Inicio', href: '/' },
+    { title: 'Menú', href: '/#menu' },
     { title: 'Contacto', href: '/contact' },
   ];
 

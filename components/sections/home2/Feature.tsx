@@ -4,8 +4,8 @@ export default function FeaturesSection() {
   const features = [
     {
       icon: 'flaticon-credit-card',
-      title: 'Security Payment',
-      description: 'We Ensure Secure Payment',
+      title: 'Pago Seguro',
+      description: 'Garantizamos tu pago',
     },
     {
       icon: 'flaticon-free-shipping',

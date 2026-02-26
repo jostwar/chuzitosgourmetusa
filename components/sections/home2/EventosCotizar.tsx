@@ -23,9 +23,9 @@ export default function EventosCotizarSection() {
                   </h2>
                 </div>
                 <div className="happy-button">
-                  <Link href="#" className="theme-btn style-one">
+                  <a href="https://wa.me/17866582780?text=Hola%2C%20quiero%20cotizar%20un%20evento" target="_blank" rel="noopener noreferrer" className="theme-btn style-one">
                     Cotizar
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

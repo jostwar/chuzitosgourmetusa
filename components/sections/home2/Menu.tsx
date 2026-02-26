@@ -32,7 +32,7 @@ const KebabMenuSlider = () => {
               <span className="sub-title">
                 <i className="flaticon-healthy-food"></i>Menu Chuzos Desgranados
               </span>
-              <h2>Disfruta el autentico sabor Barranquillero</h2>
+              <h2>Disfruta el auténtico sabor Barranquillero</h2>
             </div>
           </div>
         </div>
@@ -64,6 +64,7 @@ const KebabMenuSlider = () => {
                     alt={item.title}
                     width={IMG_WIDTH}
                     height={IMG_HEIGHT}
+                    sizes="(max-width: 576px) 100vw, (max-width: 768px) 50vw, (max-width: 992px) 33vw, 348px"
                     className="chuzo-desgranado-img"
                   />
                   <div className="hover-content">
