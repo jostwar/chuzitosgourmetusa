@@ -60,7 +60,7 @@ export default function Header({
                 {isSticky && (
                   <Link href="/" className="brand-logo">
                     <Image
-                      src="https://chuzitos.s3.us-west-2.amazonaws.com/chuzitosmiamilogo.png"
+                      src="https://chuzitos.s3.us-west-2.amazonaws.com/Chuzitos+Blanco+.png"
                       alt="Chuzitos Gourmet USA"
                       width={200}
                       height={150}
@@ -78,7 +78,7 @@ export default function Header({
                     <div className="mobile-logo mb-30 d-block d-xl-none text-center">
                       <Link href="/" className="brand-logo">
                         <Image
-                          src="https://chuzitos.s3.us-west-2.amazonaws.com/chuzitosmiamilogo.png"
+                          src="https://chuzitos.s3.us-west-2.amazonaws.com/Chuzitos+Blanco+.png"
                           alt="Chuzitos Gourmet USA"
                           width={200}
                           height={150}

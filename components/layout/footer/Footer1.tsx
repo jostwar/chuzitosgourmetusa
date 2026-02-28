@@ -27,7 +27,7 @@ export default function Footer({ paddingClass = 'pt-120 pb-75' }: FooterProps) {
                   <div className="footer-logo mb-25">
                     <Link href="/">
                       <Image
-                        src="https://chuzitos.s3.us-west-2.amazonaws.com/chuzitosmiamilogo.png"
+                        src="https://chuzitos.s3.us-west-2.amazonaws.com/Chuzitos+Blanco+.png"
                         alt="Chuzitos Gourmet USA"
                         width={200}
                         height={150}

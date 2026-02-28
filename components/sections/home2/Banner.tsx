@@ -4,7 +4,7 @@ import Image from 'next/image';
 const HERO_BG =
   'https://chuzitos.s3.us-west-2.amazonaws.com/heroback3.png';
 const HERO_LOGO =
-  'https://chuzitos.s3.us-west-2.amazonaws.com/ModoChuzito.png';
+  'https://chuzitos.s3.us-west-2.amazonaws.com/LogoModoChuzitos.png';
 
 const HeroSection = () => {
   return (
